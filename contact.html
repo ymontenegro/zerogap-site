@@ -7,8 +7,7 @@
   <!-- Enlaces a Google Fonts para replicar la tipografía original -->
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <!-- Remover EmailJS SDK ya no es necesario -->
   <meta name="description" content="Contáctate con Zerogap para llevar tus operaciones al siguiente nivel y descubrir soluciones logísticas de vanguardia.">
 </head>
 <body>
@@ -162,11 +161,8 @@
   </footer>
 
   <script>
-    // Inicializar EmailJS (necesitas configurar tu cuenta)
-    emailjs.init("YOUR_PUBLIC_KEY"); // Reemplazar con tu clave pública de EmailJS
-    
-    // Manejar el envío del formulario con EmailJS y Gmail
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // Manejar el envío del formulario con backend SMTP
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
       const form = this;
@@ -179,22 +175,30 @@
       statusDiv.innerHTML = '<p style="color: #0b5ed7;">Enviando mensaje...</p>';
       
       // Preparar los datos del formulario
-      const templateParams = {
+      const formData = {
         from_name: form.from_name.value,
-        company: form.company.value || 'No especificada',
+        company: form.company.value,
         reply_to: form.reply_to.value,
-        phone: form.phone.value || 'No especificado',
-        sector: form.sector.value || 'No especificado',
+        phone: form.phone.value,
+        sector: form.sector.value,
         subject: form.subject.value,
-        message: form.message.value,
-        to_email: 'contacto@zerogap.cl'
+        message: form.message.value
       };
       
-      // Enviar email usando EmailJS
-      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-        .then(function(response) {
+      try {
+        // Enviar al backend
+        const response = await fetch('/send-contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
           // Éxito
-          console.log('Email sent successfully:', response);
           statusDiv.innerHTML = '<p style="color: #28a745; font-weight: bold;">✅ ¡Mensaje enviado correctamente! Te responderemos pronto.</p>';
           form.reset();
           
@@ -203,39 +207,42 @@
             statusDiv.innerHTML += '<p style="color: #25d366; margin-top: 15px;"><strong>¿Necesitas una respuesta más rápida?</strong><br><a href="https://wa.me/56939100549" target="_blank" style="color: #25d366; text-decoration: underline;">Escríbenos por WhatsApp</a></p>';
           }, 2000);
           
-        }, function(error) {
-          // Error - usar fallback de mailto
-          console.log('EmailJS failed:', error);
-          
-          // Crear el cuerpo del correo para fallback
-          const emailBody = `Nuevo mensaje de contacto desde zerogap.cl\n\n` +
-            `Nombre: ${templateParams.from_name}\n` +
-            `Empresa: ${templateParams.company}\n` +
-            `Email: ${templateParams.reply_to}\n` +
-            `Teléfono: ${templateParams.phone}\n` +
-            `Sector: ${templateParams.sector}\n` +
-            `Asunto: ${templateParams.subject}\n\n` +
-            `Mensaje:\n${templateParams.message}\n\n` +
-            `---\nEnviado desde el formulario de contacto de zerogap.cl`;
-          
-          const mailtoLink = `mailto:contacto@zerogap.cl?subject=${encodeURIComponent(templateParams.subject)}&body=${encodeURIComponent(emailBody)}`;
-          
-          statusDiv.innerHTML = `
-            <p style="color: #f39c12;">⚡ Abriendo tu cliente de correo...</p>
-            <p style="color: #25d366; margin-top: 15px;"><strong>¿Prefieres otra opción?</strong><br>
-            <a href="https://wa.me/56939100549" target="_blank" style="color: #25d366; text-decoration: underline;">Contáctanos por WhatsApp</a></p>
-          `;
-          
-          // Abrir cliente de correo como fallback
-          setTimeout(() => {
-            window.location.href = mailtoLink;
-          }, 1000);
-        })
-        .finally(function() {
-          // Restaurar botón
-          submitBtn.innerHTML = 'Enviar mensaje';
-          submitBtn.disabled = false;
-        });
+        } else {
+          throw new Error(result.error || 'Error desconocido');
+        }
+        
+      } catch (error) {
+        // Error - usar fallback de mailto
+        console.log('Backend failed:', error);
+        
+        // Crear el cuerpo del correo para fallback
+        const emailBody = `Nuevo mensaje de contacto desde zerogap.cl\n\n` +
+          `Nombre: ${formData.from_name}\n` +
+          `Empresa: ${formData.company || 'No especificada'}\n` +
+          `Email: ${formData.reply_to}\n` +
+          `Teléfono: ${formData.phone || 'No especificado'}\n` +
+          `Sector: ${formData.sector || 'No especificado'}\n` +
+          `Asunto: ${formData.subject}\n\n` +
+          `Mensaje:\n${formData.message}\n\n` +
+          `---\nEnviado desde el formulario de contacto de zerogap.cl`;
+        
+        const mailtoLink = `mailto:contacto@zerogap.cl?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailBody)}`;
+        
+        statusDiv.innerHTML = `
+          <p style="color: #f39c12;">⚡ Abriendo tu cliente de correo...</p>
+          <p style="color: #25d366; margin-top: 15px;"><strong>¿Prefieres otra opción?</strong><br>
+          <a href="https://wa.me/56939100549" target="_blank" style="color: #25d366; text-decoration: underline;">Contáctanos por WhatsApp</a></p>
+        `;
+        
+        // Abrir cliente de correo como fallback
+        setTimeout(() => {
+          window.location.href = mailtoLink;
+        }, 1000);
+      } finally {
+        // Restaurar botón
+        submitBtn.innerHTML = 'Enviar mensaje';
+        submitBtn.disabled = false;
+      }
     });
 
     // Validación en tiempo real
@@ -265,8 +272,6 @@
         }
       });
     }
-  </script>
-    });
   </script>
 </body>
 </html>

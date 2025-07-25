@@ -1,6 +1,72 @@
-# Configuración de EmailJS para formulario de contacto
+# Configuración de formulario de contacto
 
-## Pasos para configurar EmailJS con Gmail:
+## OPCIÓN RECOMENDADA: SMTP de Google + Backend
+
+### Ventajas del SMTP:
+- ✅ Más confiable y profesional
+- ✅ Sin límites de 200 emails/mes
+- ✅ Control total sobre el proceso
+- ✅ Mejor deliverability
+- ✅ No depende de servicios externos
+
+### Configuración SMTP:
+1. **Habilitar autenticación de 2 factores** en Gmail para yerko@zerogap.cl
+2. **Generar contraseña de aplicación**:
+   - Gmail > Configuración > Seguridad
+   - "Contraseñas de aplicaciones"
+   - Genera una para "Correo"
+3. **Crear backend** (Node.js con Nodemailer)
+4. **Configurar SMTP**:
+   - Host: smtp.gmail.com
+   - Puerto: 587 (TLS)
+   - Usuario: yerko@zerogap.cl
+   - Contraseña: [contraseña de aplicación generada]
+
+### Configuración implementada:
+
+1. **Backend con Nodemailer**:
+```javascript
+const transporter = nodemailer.createTransporter({
+  service: 'gmail',
+  auth: {
+    user: 'yerko@zerogap.cl',
+    pass: process.env.GMAIL_APP_PASSWORD
+  }
+});
+```
+
+2. **Configurar Gmail (OBLIGATORIO para yerko@zerogap.cl)**:
+
+   - Habilitar autenticación de 2 factores en Gmail
+   - Generar contraseña de aplicación en Gmail > Configuración > Seguridad
+   - Configurar variable de entorno:
+
+```bash
+# En Heroku:
+heroku config:set GMAIL_APP_PASSWORD=tu_contraseña_de_aplicacion
+
+# En desarrollo local, crear archivo .env:
+GMAIL_APP_PASSWORD=tu_contraseña_de_aplicacion
+```
+
+3. **Para deployar**:
+```bash
+npm install
+heroku config:set GMAIL_APP_PASSWORD=tu_contraseña_aqui
+git push heroku main
+```
+
+### Características implementadas:
+- ✅ Envío desde yerko@zerogap.cl
+- ✅ Recepción en yerko@zerogap.cl
+- ✅ Fallback automático a mailto
+- ✅ Opción adicional de WhatsApp
+- ✅ Validación frontend y backend
+- ✅ Formato HTML profesional del email
+
+---
+
+## ALTERNATIVA: EmailJS (ya no necesario)
 
 ### 1. Crear cuenta en EmailJS
 1. Ve a https://www.emailjs.com/
