@@ -189,63 +189,97 @@
   </footer>
 
   <script>
-    // Carrusel de casos de éxito
-    let successCurrentSlide = 0;
-    const successTrack = document.getElementById('successCarouselTrack');
-    const successDots = document.querySelectorAll('.success-dot');
-    const successPrevBtn = document.getElementById('successPrevBtn');
-    const successNextBtn = document.getElementById('successNextBtn');
-    const successTotalSlides = document.querySelectorAll('.success-case-card').length;
+    // Carrusel de casos de éxito mejorado para móviles
+    document.addEventListener('DOMContentLoaded', function() {
+      let successCurrentSlide = 0;
+      const successTrack = document.getElementById('successCarouselTrack');
+      const successDots = document.querySelectorAll('.success-dot');
+      const successPrevBtn = document.getElementById('successPrevBtn');
+      const successNextBtn = document.getElementById('successNextBtn');
+      const successTotalSlides = document.querySelectorAll('.success-case-card').length;
 
-    function updateSuccessCarousel() {
-      const cardWidth = document.querySelector('.success-case-card').offsetWidth;
-      const gap = 30; // Gap entre cards
-      const offset = -(successCurrentSlide * (cardWidth + gap));
-      successTrack.style.transform = `translateX(${offset}px)`;
-      
-      // Actualizar dots
-      successDots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === successCurrentSlide);
-      });
-    }
+      if (!successTrack || !successTotalSlides) {
+        console.warn('Elementos del carrusel de casos no encontrados');
+        return;
+      }
 
-    function nextSuccessSlide() {
-      successCurrentSlide = (successCurrentSlide + 1) % successTotalSlides;
-      updateSuccessCarousel();
-    }
+      function updateSuccessCarousel() {
+        try {
+          const cardWidth = document.querySelector('.success-case-card')?.offsetWidth || 350;
+          const gap = window.innerWidth < 768 ? 20 : 30;
+          const offset = -(successCurrentSlide * (cardWidth + gap));
+          
+          if (successTrack) {
+            successTrack.style.transform = `translateX(${offset}px)`;
+            successTrack.style.transition = 'transform 0.5s ease';
+          }
+          
+          // Actualizar dots
+          successDots.forEach((dot, index) => {
+            if (dot) {
+              dot.classList.toggle('active', index === successCurrentSlide);
+            }
+          });
+        } catch (error) {
+          console.error('Error actualizando carrusel:', error);
+        }
+      }
 
-    function prevSuccessSlide() {
-      successCurrentSlide = (successCurrentSlide - 1 + successTotalSlides) % successTotalSlides;
-      updateSuccessCarousel();
-    }
-
-    // Event listeners
-    successNextBtn.addEventListener('click', nextSuccessSlide);
-    successPrevBtn.addEventListener('click', prevSuccessSlide);
-
-    // Dots navigation
-    successDots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        successCurrentSlide = index;
+      function nextSuccessSlide() {
+        successCurrentSlide = (successCurrentSlide + 1) % successTotalSlides;
         updateSuccessCarousel();
+      }
+
+      function prevSuccessSlide() {
+        successCurrentSlide = (successCurrentSlide - 1 + successTotalSlides) % successTotalSlides;
+        updateSuccessCarousel();
+      }
+
+      // Event listeners seguros
+      if (successNextBtn) {
+        successNextBtn.addEventListener('click', nextSuccessSlide);
+      }
+      if (successPrevBtn) {
+        successPrevBtn.addEventListener('click', prevSuccessSlide);
+      }
+
+      // Dots navigation
+      successDots.forEach((dot, index) => {
+        if (dot) {
+          dot.addEventListener('click', () => {
+            successCurrentSlide = index;
+            updateSuccessCarousel();
+          });
+        }
       });
+
+      // Auto-scroll
+      let successAutoSlide = setInterval(nextSuccessSlide, 5000);
+
+      // Pausar auto-scroll al hacer hover
+      const successCarouselContainer = document.querySelector('.success-carousel-container');
+      if (successCarouselContainer) {
+        successCarouselContainer.addEventListener('mouseenter', () => {
+          clearInterval(successAutoSlide);
+        });
+
+        successCarouselContainer.addEventListener('mouseleave', () => {
+          successAutoSlide = setInterval(nextSuccessSlide, 5000);
+        });
+      }
+
+      // Responsive
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(updateSuccessCarousel, 250);
+      });
+
+      // Inicializar
+      updateSuccessCarousel();
+      
+      console.log('Carrusel de casos de éxito inicializado');
     });
-
-    // Auto-scroll cada 5 segundos
-    let successAutoSlide = setInterval(nextSuccessSlide, 5000);
-
-    // Pausar auto-scroll al hacer hover
-    const successCarouselContainer = document.querySelector('.success-carousel-container');
-    successCarouselContainer.addEventListener('mouseenter', () => {
-      clearInterval(successAutoSlide);
-    });
-
-    successCarouselContainer.addEventListener('mouseleave', () => {
-      successAutoSlide = setInterval(nextSuccessSlide, 5000);
-    });
-
-    // Actualizar carrusel al cambiar tamaño de ventana
-    window.addEventListener('resize', updateSuccessCarousel);
   </script>
 </body>
 </html>

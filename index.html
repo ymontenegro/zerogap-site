@@ -222,218 +222,201 @@
     </div>
   </footer>
 
-  <!-- JavaScript para el carrusel horizontal de clientes -->
+  <!-- JavaScript optimizado para móviles -->
   <script>
-    let currentPosition = 0;
-    const track = document.querySelector('.clients-carousel-track');
-    const items = document.querySelectorAll('.client-item');
-    const itemWidth = 210; // 180px width + 30px gap
-    const visibleItems = Math.floor(window.innerWidth / itemWidth);
-    const maxPosition = Math.max(0, (items.length - visibleItems) * itemWidth);
-    
-    // Auto-scroll del carrusel
-    let autoScrollInterval;
-    let isAutoScrolling = true;
-    
-    function updateCarousel() {
-      if (track) {
-        track.style.transform = `translateX(-${currentPosition}px)`;
-      }
-    }
-    
-    function scrollCarousel(direction) {
-      const scrollAmount = itemWidth * 2; // Scroll 2 items at a time
+    // Verificar que todo esté cargado antes de ejecutar
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM cargado correctamente');
       
-      if (direction === 1) {
-        // Scroll hacia la derecha
-        currentPosition += scrollAmount;
-        if (currentPosition > maxPosition) {
-          currentPosition = 0; // Loop back to start
-        }
-      } else {
-        // Scroll hacia la izquierda
-        currentPosition -= scrollAmount;
-        if (currentPosition < 0) {
-          currentPosition = maxPosition; // Loop to end
+      // Variables del carrusel con valores por defecto seguros
+      let currentPosition = 0;
+      const track = document.querySelector('.clients-carousel-track');
+      const items = document.querySelectorAll('.client-item');
+      
+      if (!track || !items.length) {
+        console.warn('Elementos del carrusel no encontrados');
+        return;
+      }
+      
+      const itemWidth = 210;
+      const visibleItems = Math.max(1, Math.floor(window.innerWidth / itemWidth));
+      const maxPosition = Math.max(0, (items.length - visibleItems) * itemWidth);
+      
+      let autoScrollInterval;
+      let isAutoScrolling = true;
+      let isUserInteracting = false;
+      
+      function updateCarousel() {
+        if (track && typeof currentPosition === 'number') {
+          track.style.transform = `translateX(-${currentPosition}px)`;
+          track.style.transition = isUserInteracting ? 'none' : 'transform 0.3s ease';
         }
       }
       
-      updateCarousel();
-      resetAutoScroll();
-    }
-    
-    function startAutoScroll() {
-      if (items.length > visibleItems) {
+      function scrollCarousel(direction) {
+        if (isUserInteracting) return;
+        
+        const scrollAmount = itemWidth * 2;
+        
+        if (direction === 1) {
+          currentPosition += scrollAmount;
+          if (currentPosition > maxPosition) {
+            currentPosition = 0;
+          }
+        } else {
+          currentPosition -= scrollAmount;
+          if (currentPosition < 0) {
+            currentPosition = maxPosition;
+          }
+        }
+        
+        updateCarousel();
+        resetAutoScroll();
+      }
+      
+      function startAutoScroll() {
+        if (items.length <= visibleItems) return;
+        
+        clearInterval(autoScrollInterval);
         autoScrollInterval = setInterval(() => {
-          if (isAutoScrolling) {
-            currentPosition += 0.5; // Scroll más lento: 0.5px por frame
+          if (isAutoScrolling && !isUserInteracting) {
+            currentPosition += 0.5;
             if (currentPosition > maxPosition) {
               currentPosition = 0;
             }
             updateCarousel();
           }
-        }, 50); // 50ms para movimiento más suave y lento
-      }
-    }
-    
-    function resetAutoScroll() {
-      clearInterval(autoScrollInterval);
-      setTimeout(startAutoScroll, 3000); // Restart después de 3 segundos
-    }
-    
-    // Event listeners para los botones
-    document.addEventListener('DOMContentLoaded', function() {
-      const prevBtn = document.querySelector('.prev-btn');
-      const nextBtn = document.querySelector('.next-btn');
-      const carouselContainer = document.querySelector('.clients-carousel-container');
-      
-      if (prevBtn) {
-        prevBtn.addEventListener('click', function() {
-          console.log('Previous button clicked');
-          scrollCarousel(-1);
-        });
+        }, 50);
       }
       
-      if (nextBtn) {
-        nextBtn.addEventListener('click', function() {
-          console.log('Next button clicked');
-          scrollCarousel(1);
-        });
+      function resetAutoScroll() {
+        clearInterval(autoScrollInterval);
+        setTimeout(startAutoScroll, 3000);
       }
       
-      // Pausar auto-scroll cuando el mouse está sobre el carrusel
-      if (carouselContainer) {
-        carouselContainer.addEventListener('mouseenter', () => {
-          isAutoScrolling = false;
-        });
+      // Event listeners seguros
+      try {
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const carouselContainer = document.querySelector('.clients-carousel-container');
         
-        carouselContainer.addEventListener('mouseleave', () => {
-          isAutoScrolling = true;
-        });
-      }
-      
-      // Soporte para gestos táctiles
-      let touchStartX = 0;
-      let touchEndX = 0;
-      let isDragging = false;
-      
-      if (track) {
-        track.addEventListener('touchstart', (e) => {
-          touchStartX = e.changedTouches[0].screenX;
-          isDragging = true;
-          isAutoScrolling = false;
-        });
+        if (prevBtn) {
+          prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollCarousel(-1);
+          });
+        }
         
-        track.addEventListener('touchmove', (e) => {
-          if (!isDragging) return;
-          e.preventDefault();
-          const touchX = e.changedTouches[0].screenX;
-          const diff = touchStartX - touchX;
-          const newPosition = currentPosition + diff;
+        if (nextBtn) {
+          nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollCarousel(1);
+          });
+        }
+        
+        // Control de hover/mouse
+        if (carouselContainer) {
+          carouselContainer.addEventListener('mouseenter', () => {
+            isAutoScrolling = false;
+          });
           
-          // Constraint dentro de los límites
-          if (newPosition >= 0 && newPosition <= maxPosition) {
+          carouselContainer.addEventListener('mouseleave', () => {
+            isAutoScrolling = true;
+          });
+        }
+        
+        // Soporte táctil mejorado
+        if (track) {
+          let touchStartX = 0;
+          let touchEndX = 0;
+          let isDragging = false;
+          let startTime = 0;
+          
+          track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].clientX;
+            startTime = Date.now();
+            isDragging = true;
+            isUserInteracting = true;
+            isAutoScrolling = false;
+          }, { passive: true });
+          
+          track.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            
+            const touchX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchX;
+            const newPosition = Math.max(0, Math.min(currentPosition + diff, maxPosition));
+            
             currentPosition = newPosition;
             updateCarousel();
-          }
+            touchStartX = touchX;
+          }, { passive: true });
           
-          touchStartX = touchX;
-        });
-        
-        track.addEventListener('touchend', (e) => {
-          isDragging = false;
-          isAutoScrolling = true;
-          touchEndX = e.changedTouches[0].screenX;
-          
-          const swipeDistance = touchStartX - touchEndX;
-          const swipeThreshold = 50;
-          
-          if (Math.abs(swipeDistance) > swipeThreshold) {
-            if (swipeDistance > 0) {
-              scrollCarousel(1);
-            } else {
-              scrollCarousel(-1);
+          track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            const swipeDistance = touchStartX - touchEndX;
+            const swipeTime = Date.now() - startTime;
+            const swipeVelocity = Math.abs(swipeDistance) / swipeTime;
+            
+            isDragging = false;
+            isUserInteracting = false;
+            
+            // Detectar swipe rápido
+            if (swipeVelocity > 0.5 && Math.abs(swipeDistance) > 30) {
+              if (swipeDistance > 0) {
+                scrollCarousel(1);
+              } else {
+                scrollCarousel(-1);
+              }
             }
-          }
-        });
-      }
-      
-      // Control por teclado
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-          scrollCarousel(-1);
-        } else if (e.key === 'ArrowRight') {
-          scrollCarousel(1);
+            
+            setTimeout(() => {
+              isAutoScrolling = true;
+            }, 1000);
+          }, { passive: true });
         }
-      });
-      
-      // Scroll con mouse wheel
-      if (carouselContainer) {
-        carouselContainer.addEventListener('wheel', (e) => {
-          e.preventDefault();
-          
-          if (e.deltaY > 0) {
-            scrollCarousel(1);
-          } else {
-            scrollCarousel(-1);
-          }
-        });
-      }
-      
-      // Responsive: recalcular en resize
-      window.addEventListener('resize', () => {
-        const newVisibleItems = Math.floor(window.innerWidth / itemWidth);
-        const newMaxPosition = Math.max(0, (items.length - newVisibleItems) * itemWidth);
         
-        if (currentPosition > newMaxPosition) {
-          currentPosition = newMaxPosition;
-          updateCarousel();
-        }
-      });
-      
-      // Duplicar items para scroll infinito suave si hay pocos elementos
-      if (items.length < 10) {
-        const trackClone = track.cloneNode(true);
-        Array.from(trackClone.children).forEach(item => {
-          track.appendChild(item);
+        // Responsive
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            const newVisibleItems = Math.max(1, Math.floor(window.innerWidth / itemWidth));
+            const newMaxPosition = Math.max(0, (items.length - newVisibleItems) * itemWidth);
+            
+            if (currentPosition > newMaxPosition) {
+              currentPosition = newMaxPosition;
+              updateCarousel();
+            }
+          }, 250);
         });
+        
+        // Inicializar
+        updateCarousel();
+        setTimeout(startAutoScroll, 2000);
+        
+        console.log('Carrusel inicializado correctamente');
+        
+      } catch (error) {
+        console.error('Error inicializando carrusel:', error);
       }
-      
-      updateCarousel();
-      setTimeout(startAutoScroll, 2000); // Empezar auto-scroll después de 2 segundos
-      
-      // Animación de entrada
-      items.forEach((item, index) => {
-        setTimeout(() => {
-          item.style.opacity = '1';
-          item.style.transform = 'translateX(0)';
-        }, index * 100);
-      });
-      
-      // Intersection Observer para efectos cuando el carrusel es visible
-      const observerOptions = {
-        threshold: 0.3,
-        rootMargin: '0px'
-      };
-      
-      const carouselObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Reiniciar animaciones cuando el carrusel entra en vista
-            const items = entry.target.querySelectorAll('.client-item');
-            items.forEach((item, index) => {
-              item.style.animationDelay = `${index * 0.05}s`;
-              item.style.animation = 'none';
-              setTimeout(() => {
-                item.style.animation = 'slideInFromLeft 0.6s ease forwards';
-              }, 10);
-            });
-          }
-        });
-      }, observerOptions);
-      
-      if (carouselContainer) {
-        carouselObserver.observe(carouselContainer);
+    });
+    
+    // Verificar si los estilos se cargaron
+    window.addEventListener('load', function() {
+      const testElement = document.querySelector('.hero-content');
+      if (testElement) {
+        const styles = window.getComputedStyle(testElement);
+        if (styles.maxWidth === 'none' || styles.maxWidth === '') {
+          console.warn('Los estilos CSS no se cargaron correctamente');
+          // Intentar recargar el CSS
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = 'style.css?v=' + Date.now();
+          document.head.appendChild(link);
+        } else {
+          console.log('Estilos CSS cargados correctamente');
+        }
       }
     });
   </script>

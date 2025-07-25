@@ -1589,22 +1589,68 @@ footer {
   margin-right: auto;
 }
 
-@media (max-width: 768px) {
-  .about-main-image {
-    height: 250px;
-    margin: 0 20px;
+/* Mejorar rendimiento en móviles */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Optimizar animaciones para móviles */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
-  
-  .about {
-    padding: 60px 0;
+}
+
+/* Mejorar hero para móviles */
+#hero {
+  /* ...existing code... */
+  /* Deshabilitar parallax en móviles para mejor rendimiento */
+  background-attachment: scroll;
+}
+
+@media (min-width: 768px) {
+  #hero {
+    background-attachment: fixed;
   }
-  
-  .about h2 {
-    font-size: 2rem;
-  }
-  
-  .about p {
-    font-size: 1rem;
-    padding: 0 20px;
-  }
+}
+
+/* Optimizar carruseles para touch */
+.clients-carousel-track,
+.success-carousel-track {
+  /* ...existing code... */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Mejorar botones táctiles */
+.carousel-btn,
+.success-carousel-btn,
+.btn,
+.submit-btn {
+  /* ...existing code... */
+  min-height: 44px; /* Tamaño mínimo recomendado para touch */
+  min-width: 44px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Optimizar imágenes para móviles */
+img {
+  max-width: 100%;
+  height: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Mejorar rendimiento de gradientes en móviles */
+.pillar-card,
+.case-card,
+.success-case-card {
+  /* ...existing code... */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }

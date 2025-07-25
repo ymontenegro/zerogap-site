@@ -46,10 +46,25 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Servir archivos estáticos
+// Servir archivos estáticos con mejores headers para móviles
 app.use(express.static(path.join(__dirname), {
-  maxAge: '1y', // Cache por 1 año para assets estáticos
-  etag: true
+  maxAge: '1d', // Reducir cache para development
+  etag: true,
+  setHeaders: function (res, path, stat) {
+    // Headers específicos para móviles
+    res.set('Cache-Control', 'public, max-age=86400');
+    
+    // Headers para mejor compatibilidad móvil
+    if (path.endsWith('.css')) {
+      res.set('Content-Type', 'text/css; charset=utf-8');
+    }
+    if (path.endsWith('.js')) {
+      res.set('Content-Type', 'application/javascript; charset=utf-8');
+    }
+    if (path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.jpeg')) {
+      res.set('Content-Type', 'image/' + path.split('.').pop());
+    }
+  }
 }));
 
 // Configurar tipos MIME
@@ -185,10 +200,28 @@ app.post('/send-contact', async (req, res) => {
   }
 });
 
+// Middleware para mejor manejo de errores en móviles
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({ error: 'Error interno del servidor' });
+});
+
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`🚀 Zerogap site running on port ${PORT}`);
   console.log(`📱 Local: http://localhost:${PORT}`);
+});
+
+// Servir archivos estáticos
+app.use(express.static(path.join(__dirname, '.')));
+
+// Redirigir todas las rutas a index.html para SPA
+app.get('*', (req, res) => {
+  // Si es un archivo específico, servirlo directamente
+  if (req.path.includes('.')) {
+    return res.status(404).send('Archivo no encontrado');
+  }
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 module.exports = app;
