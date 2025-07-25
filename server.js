@@ -1,18 +1,27 @@
+// Cargar variables de entorno en desarrollo
+if (process.env.NODE_ENV !== 'production') {
+  try {
+    require('dotenv').config();
+  } catch (err) {
+    console.log('⚠️  dotenv no disponible, usando variables del sistema');
+  }
+}
+
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
 const helmet = require('helmet');
 const nodemailer = require('nodemailer');
-const cors = require('cors');
+// const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Configuración SMTP de Gmail
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'yerko@zerogap.cl',
+    user: process.env.GMAIL_USER || 'yerko@zerogap.cl',
     pass: process.env.GMAIL_APP_PASSWORD
   }
 });
@@ -33,7 +42,7 @@ app.use(helmet({
 
 // Compresión GZIP
 app.use(compression());
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -82,19 +91,45 @@ app.get('*', (req, res) => {
 // Endpoint para formulario de contacto
 app.post('/send-contact', async (req, res) => {
   try {
+    console.log('📧 Recibida solicitud de contacto:', req.body);
+    
     const { from_name, company, reply_to, phone, sector, subject, message } = req.body;
 
     // Validar campos requeridos
     if (!from_name || !reply_to || !subject || !message) {
+      console.log('❌ Faltan campos obligatorios');
       return res.status(400).json({ 
         success: false, 
         error: 'Faltan campos obligatorios' 
       });
     }
 
+    // Verificar configuración del transportador
+    if (!process.env.GMAIL_APP_PASSWORD) {
+      console.error('❌ GMAIL_APP_PASSWORD no está configurado');
+      return res.status(500).json({ 
+        success: false, 
+        error: 'Configuración de email incompleta' 
+      });
+    }
+
+    console.log('🔧 Configuración de Gmail encontrada');
+
+    // Verificar conexión del transportador
+    try {
+      await transporter.verify();
+      console.log('✅ Conexión SMTP verificada');
+    } catch (verifyError) {
+      console.error('❌ Error de verificación SMTP:', verifyError);
+      return res.status(500).json({ 
+        success: false, 
+        error: 'Error de configuración SMTP: ' + verifyError.message 
+      });
+    }
+
     // Configurar el email
     const mailOptions = {
-      from: 'yerko@zerogap.cl',
+      from: process.env.GMAIL_USER || 'yerko@zerogap.cl',
       to: 'yerko@zerogap.cl',
       subject: `Nuevo mensaje desde Zerogap.cl - ${subject}`,
       html: `
@@ -125,16 +160,27 @@ app.post('/send-contact', async (req, res) => {
       replyTo: reply_to
     };
 
+    console.log('📬 Enviando email...');
+
     // Enviar el email
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log('✅ Email enviado correctamente:', info.messageId);
     
     res.json({ success: true, message: 'Email enviado correctamente' });
     
   } catch (error) {
-    console.error('Error enviando email:', error);
+    console.error('❌ Error completo enviando email:', {
+      message: error.message,
+      code: error.code,
+      command: error.command,
+      response: error.response,
+      responseCode: error.responseCode,
+      stack: error.stack
+    });
+    
     res.status(500).json({ 
       success: false, 
-      error: 'Error interno del servidor' 
+      error: 'Error interno del servidor: ' + error.message 
     });
   }
 });

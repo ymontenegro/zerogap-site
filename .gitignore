@@ -1,8 +1,5 @@
 # Dependencias
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Variables de entorno
 .env
@@ -12,13 +9,24 @@ yarn-error.log*
 .env.production.local
 
 # Logs
-logs
-*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Archivos temporales
+# Datos en tiempo de ejecución
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directorio de cobertura utilizado por herramientas como istanbul
+coverage/
+
+# Archivos generados por el SO
 .DS_Store
-.vscode/
-.idea/
-
-# Heroku
-.heroku/
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
