@@ -1,0 +1,27 @@
+{
+  "name": "zerogap-site",
+  "version": "1.0.0",
+  "description": "Sitio web corporativo de Zerogap by Optyges",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "compression": "^1.7.4",
+    "helmet": "^7.0.0"
+  },
+  "keywords": [
+    "zerogap",
+    "optyges",
+    "logistica",
+    "optimizacion",
+    "ingenieria"
+  ],
+  "author": "Zerogap by Optyges",
+  "license": "MIT"
+}

@@ -1,0 +1,45 @@
+GUÍA PARA DESCARGAR LOGOS REALES DE CLIENTES:
+
+🔍 MINERÍA:
+• CODELCO: www.codelco.com (Prensa/Descargas) o buscar "CODELCO logo oficial"
+• AMSA - Antofagasta Minerals: www.antofagasta.com/es/nuestras-operaciones/
+• Centinela: Buscar "Centinela Mining logo" 
+• Collahuasi: www.collahuasi.cl
+• Tetra Tech: www.tetratech.com (Media/Logos)
+• JRI Ingeniería: www.jri.cl
+
+🌲 FORESTAL:
+• Arauco: www.arauco.cl (Centro de prensa)
+• Arauco Brasil: www.arauco.com.br
+• Fibria: Ahora parte de Suzano - suzano.com.br
+• CMPC: www.cmpc.com (Media/Logos)
+• Klabin: www.klabin.com.br
+• Mondi Ltd.: www.mondigroup.com
+• MASISA: www.masisa.com
+• TERRANOVA: Buscar "TERRANOVA forestal logo"
+• Celulose Riograndense: Ahora CMPC Celulose Riograndense
+
+🚛 LOGÍSTICA:
+• Coca-Cola: www.coca-colacompany.com (Press Center/Media Assets)
+• Embotelladora Andina: www.embotelladora-andina.com
+• EFE: www.efe.cl
+• Gobierno de Chile: Usar escudo oficial de Chile
+• CSAV: www.csav.com
+• LUMIN: Buscar información específica de esta empresa
+
+📋 INSTRUCCIONES:
+1. Visita el sitio web oficial de cada empresa
+2. Busca sección "Prensa", "Media", "Press Kit" o "Logos"
+3. Descarga el logo en formato PNG o SVG
+4. Redimensiona a aprox. 200x100px manteniendo proporciones
+5. Guarda con el nombre exacto: codelco.png, arauco.png, etc.
+6. Reemplaza los archivos SVG placeholder en esta carpeta
+
+💡 ALTERNATIVA RÁPIDA:
+Usar Google Imágenes con filtros:
+- Buscar "[Empresa] logo"
+- Herramientas → Derechos de uso → "Etiquetadas para reutilización"
+- Herramientas → Tipo → PNG
+- Descargar imagen de alta resolución
+
+Los placeholders SVG actuales funcionan perfectamente hasta que tengas los logos reales.
