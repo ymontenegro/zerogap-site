@@ -12,7 +12,7 @@ const path = require('path');
 const compression = require('compression');
 const helmet = require('helmet');
 const nodemailer = require('nodemailer');
-// const cors = require('cors');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -35,14 +35,14 @@ app.use(helmet({
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       imgSrc: ["'self'", "data:", "https:"],
       scriptSrc: ["'self'", "'unsafe-inline'"],
-      connectSrc: ["'self'"]
+      connectSrc: ["'self'", "https://zerogap-site-937e31a4f419.herokuapp.com", "https://*.herokuapp.com"]
     }
   }
 }));
 
 // Compresión GZIP
 app.use(compression());
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
