@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto - Zerogap</title>
-  <!-- Fuentes y estilos -->
+    <title>Contacto - Zerogap</title>
+  <!-- Enlaces a Google Fonts para replicar la tipografía original -->
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <meta name="description" content="Contáctate con Zerogap para llevar tus operaciones al siguiente nivel y descubrir soluciones logísticas de vanguardia.">
 </head>
 <body>
@@ -92,10 +94,10 @@
           <!-- Formulario de contacto -->
           <div class="contact-form">
             <h2>Envíanos un mensaje</h2>
-            <form action="https://formspree.io/f/xovaeeqj" method="POST" id="contactForm">
+            <form id="contactForm">
               <div class="form-group">
                 <label for="name">Nombre completo *</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="from_name" required>
               </div>
 
               <div class="form-group">
@@ -105,7 +107,7 @@
 
               <div class="form-group">
                 <label for="email">Correo electrónico *</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="reply_to" required>
               </div>
 
               <div class="form-group">
@@ -137,10 +139,6 @@
                 <textarea id="message" name="message" rows="6" required placeholder="Cuéntanos sobre tu desafío o proyecto..."></textarea>
               </div>
 
-              <!-- Campo oculto para indicar el origen -->
-              <input type="hidden" name="_subject" value="Nuevo mensaje desde Zerogap.cl">
-              <input type="hidden" name="_next" value="https://zerogap.cl/contact.html?sent=true">
-
               <button type="submit" class="submit-btn">Enviar mensaje</button>
             </form>
 
@@ -164,12 +162,14 @@
   </footer>
 
   <script>
-    // Manejar el envío del formulario con Formspree
-    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    // Inicializar EmailJS (necesitas configurar tu cuenta)
+    emailjs.init("YOUR_PUBLIC_KEY"); // Reemplazar con tu clave pública de EmailJS
+    
+    // Manejar el envío del formulario con EmailJS y Gmail
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
       const form = this;
-      const formData = new FormData(form);
       const statusDiv = document.getElementById('form-status');
       const submitBtn = form.querySelector('.submit-btn');
       
@@ -178,17 +178,23 @@
       submitBtn.disabled = true;
       statusDiv.innerHTML = '<p style="color: #0b5ed7;">Enviando mensaje...</p>';
       
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        if (response.ok) {
+      // Preparar los datos del formulario
+      const templateParams = {
+        from_name: form.from_name.value,
+        company: form.company.value || 'No especificada',
+        reply_to: form.reply_to.value,
+        phone: form.phone.value || 'No especificado',
+        sector: form.sector.value || 'No especificado',
+        subject: form.subject.value,
+        message: form.message.value,
+        to_email: 'contacto@zerogap.cl'
+      };
+      
+      // Enviar email usando EmailJS
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(function(response) {
           // Éxito
+          console.log('Email sent successfully:', response);
           statusDiv.innerHTML = '<p style="color: #28a745; font-weight: bold;">✅ ¡Mensaje enviado correctamente! Te responderemos pronto.</p>';
           form.reset();
           
@@ -197,27 +203,45 @@
             statusDiv.innerHTML += '<p style="color: #25d366; margin-top: 15px;"><strong>¿Necesitas una respuesta más rápida?</strong><br><a href="https://wa.me/56939100549" target="_blank" style="color: #25d366; text-decoration: underline;">Escríbenos por WhatsApp</a></p>';
           }, 2000);
           
-        } else {
-          throw new Error('Error en el envío');
-        }
-      } catch (error) {
-        // Error - mostrar alternativa de WhatsApp
-        statusDiv.innerHTML = `
-          <p style="color: #e74c3c;">❌ Hubo un problema al enviar el mensaje.</p>
-          <p style="color: #25d366; margin-top: 15px;"><strong>¡No te preocupes!</strong><br>
-          <a href="https://wa.me/56939100549" target="_blank" style="color: #25d366; text-decoration: underline;">Contáctanos directamente por WhatsApp</a> o envía un email a <a href="mailto:contacto@zerogap.cl" style="color: #0b5ed7;">contacto@zerogap.cl</a></p>
-        `;
-      } finally {
-        // Restaurar botón
-        submitBtn.innerHTML = 'Enviar mensaje';
-        submitBtn.disabled = false;
-      }
+        }, function(error) {
+          // Error - usar fallback de mailto
+          console.log('EmailJS failed:', error);
+          
+          // Crear el cuerpo del correo para fallback
+          const emailBody = `Nuevo mensaje de contacto desde zerogap.cl\n\n` +
+            `Nombre: ${templateParams.from_name}\n` +
+            `Empresa: ${templateParams.company}\n` +
+            `Email: ${templateParams.reply_to}\n` +
+            `Teléfono: ${templateParams.phone}\n` +
+            `Sector: ${templateParams.sector}\n` +
+            `Asunto: ${templateParams.subject}\n\n` +
+            `Mensaje:\n${templateParams.message}\n\n` +
+            `---\nEnviado desde el formulario de contacto de zerogap.cl`;
+          
+          const mailtoLink = `mailto:contacto@zerogap.cl?subject=${encodeURIComponent(templateParams.subject)}&body=${encodeURIComponent(emailBody)}`;
+          
+          statusDiv.innerHTML = `
+            <p style="color: #f39c12;">⚡ Abriendo tu cliente de correo...</p>
+            <p style="color: #25d366; margin-top: 15px;"><strong>¿Prefieres otra opción?</strong><br>
+            <a href="https://wa.me/56939100549" target="_blank" style="color: #25d366; text-decoration: underline;">Contáctanos por WhatsApp</a></p>
+          `;
+          
+          // Abrir cliente de correo como fallback
+          setTimeout(() => {
+            window.location.href = mailtoLink;
+          }, 1000);
+        })
+        .finally(function() {
+          // Restaurar botón
+          submitBtn.innerHTML = 'Enviar mensaje';
+          submitBtn.disabled = false;
+        });
     });
 
     // Validación en tiempo real
-    const requiredFields = ['name', 'email', 'subject', 'message'];
-    requiredFields.forEach(fieldId => {
-      const field = document.getElementById(fieldId);
+    const requiredFields = ['from_name', 'reply_to', 'subject', 'message'];
+    requiredFields.forEach(fieldName => {
+      const field = document.querySelector(`[name="${fieldName}"]`);
       if (field) {
         field.addEventListener('blur', function() {
           if (!this.value.trim()) {
@@ -230,7 +254,7 @@
     });
 
     // Validación de email
-    const emailField = document.getElementById('email');
+    const emailField = document.querySelector('[name="reply_to"]');
     if (emailField) {
       emailField.addEventListener('blur', function() {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -240,13 +264,6 @@
           this.style.borderColor = 'rgba(11, 94, 215, 0.3)';
         }
       });
-    }
-
-    // Mostrar mensaje si viene de URL con parámetro ?sent=true
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('sent') === 'true') {
-      const statusDiv = document.getElementById('form-status');
-      statusDiv.innerHTML = '<p style="color: #28a745; font-weight: bold;">✅ ¡Mensaje enviado correctamente! Te responderemos pronto.</p>';
     }
   </script>
     });

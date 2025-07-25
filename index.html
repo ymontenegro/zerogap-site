@@ -154,10 +154,10 @@
             <img src="images/clients/arauco.png" alt="Arauco">
           </div>
           <div class="client-item">
-            <img src="images/clients/arauco-brasil.svg" alt="Arauco Brasil">
+            <img src="images/clients/arauco-brasil.png" alt="Arauco Brasil">
           </div>
           <div class="client-item">
-            <img src="images/clients/fibria.svg" alt="Fibria">
+            <img src="images/clients/fibria.png" alt="Fibria">
           </div>
           <div class="client-item">
             <img src="images/clients/cmpc.png" alt="CMPC">
@@ -175,13 +175,10 @@
             <img src="images/clients/terranova.png" alt="TERRANOVA">
           </div>
           <div class="client-item">
-            <img src="images/clients/celulose-riograndense.svg" alt="Celulose Riograndense">
-          </div>
-          <div class="client-item">
             <img src="images/clients/coca-cola.png" alt="Coca-Cola">
           </div>
           <div class="client-item">
-            <img src="images/clients/embotelladora-andina.svg" alt="Embotelladora Andina">
+            <img src="images/clients/andina.png" alt="Embotelladora Andina">
           </div>
           <div class="client-item">
             <img src="images/clients/efe.png" alt="EFE">
@@ -267,13 +264,13 @@
       if (items.length > visibleItems) {
         autoScrollInterval = setInterval(() => {
           if (isAutoScrolling) {
-            currentPosition += 1; // Scroll suave pixel por pixel
+            currentPosition += 0.5; // Scroll más lento: 0.5px por frame
             if (currentPosition > maxPosition) {
               currentPosition = 0;
             }
             updateCarousel();
           }
-        }, 30); // 30ms para scroll muy suave
+        }, 50); // 50ms para movimiento más suave y lento
       }
     }
     
