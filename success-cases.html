@@ -151,8 +151,8 @@
           
           <!-- Navegación del carrusel -->
           <div class="success-carousel-nav">
-            <button class="success-carousel-btn prev" id="successPrevBtn">❮</button>
-            <button class="success-carousel-btn next" id="successNextBtn">❯</button>
+            <button class="success-carousel-btn prev" id="successPrevBtn">‹</button>
+            <button class="success-carousel-btn next" id="successNextBtn">›</button>
           </div>
           
           <!-- Indicadores -->
@@ -205,13 +205,14 @@
 
       function updateSuccessCarousel() {
         try {
-          const cardWidth = document.querySelector('.success-case-card')?.offsetWidth || 350;
-          const gap = window.innerWidth < 768 ? 20 : 30;
+          const isMobile = window.innerWidth < 768;
+          const cardWidth = isMobile ? 300 : 350;
+          const gap = isMobile ? 15 : 30;
           const offset = -(successCurrentSlide * (cardWidth + gap));
           
           if (successTrack) {
             successTrack.style.transform = `translateX(${offset}px)`;
-            successTrack.style.transition = 'transform 0.5s ease';
+            successTrack.style.transition = 'transform 0.3s ease-in-out';
           }
           
           // Actualizar dots
@@ -220,65 +221,150 @@
               dot.classList.toggle('active', index === successCurrentSlide);
             }
           });
+
+          // Actualizar visibilidad de botones
+          if (successPrevBtn) {
+            successPrevBtn.style.opacity = successCurrentSlide === 0 ? '0.5' : '1';
+          }
+          if (successNextBtn) {
+            successNextBtn.style.opacity = successCurrentSlide === successTotalSlides - 1 ? '0.5' : '1';
+          }
         } catch (error) {
           console.error('Error actualizando carrusel:', error);
         }
       }
 
       function nextSuccessSlide() {
-        successCurrentSlide = (successCurrentSlide + 1) % successTotalSlides;
+        if (successCurrentSlide < successTotalSlides - 1) {
+          successCurrentSlide++;
+        } else {
+          successCurrentSlide = 0; // Loop back to start
+        }
         updateSuccessCarousel();
       }
 
       function prevSuccessSlide() {
-        successCurrentSlide = (successCurrentSlide - 1 + successTotalSlides) % successTotalSlides;
+        if (successCurrentSlide > 0) {
+          successCurrentSlide--;
+        } else {
+          successCurrentSlide = successTotalSlides - 1; // Loop to end
+        }
         updateSuccessCarousel();
       }
 
       // Event listeners seguros
       if (successNextBtn) {
-        successNextBtn.addEventListener('click', nextSuccessSlide);
-      }
-      if (successPrevBtn) {
-        successPrevBtn.addEventListener('click', prevSuccessSlide);
+        successNextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          nextSuccessSlide();
+        });
+        successNextBtn.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          nextSuccessSlide();
+        });
       }
 
-      // Dots navigation
+      if (successPrevBtn) {
+        successPrevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          prevSuccessSlide();
+        });
+        successPrevBtn.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          prevSuccessSlide();
+        });
+      }
+
+      // Dots navigation mejorado para móvil
       successDots.forEach((dot, index) => {
         if (dot) {
-          dot.addEventListener('click', () => {
+          dot.addEventListener('click', (e) => {
+            e.preventDefault();
+            successCurrentSlide = index;
+            updateSuccessCarousel();
+          });
+          dot.addEventListener('touchstart', (e) => {
+            e.preventDefault();
             successCurrentSlide = index;
             updateSuccessCarousel();
           });
         }
       });
 
-      // Auto-scroll
-      let successAutoSlide = setInterval(nextSuccessSlide, 5000);
+      // Soporte para gestos táctiles (swipe)
+      let startX = 0;
+      let startY = 0;
+      let distX = 0;
+      let distY = 0;
+      let threshold = 50; // Mínima distancia para registrar swipe
+      let restraint = 100; // Máxima distancia perpendicular
+      let allowedTime = 300; // Tiempo máximo para swipe
+      let startTime = 0;
 
-      // Pausar auto-scroll al hacer hover
       const successCarouselContainer = document.querySelector('.success-carousel-container');
+      
+      if (successCarouselContainer && 'ontouchstart' in window) {
+        successCarouselContainer.addEventListener('touchstart', (e) => {
+          const touchobj = e.changedTouches[0];
+          startX = touchobj.pageX;
+          startY = touchobj.pageY;
+          startTime = new Date().getTime();
+        });
+
+        successCarouselContainer.addEventListener('touchend', (e) => {
+          const touchobj = e.changedTouches[0];
+          distX = touchobj.pageX - startX;
+          distY = touchobj.pageY - startY;
+          const elapsedTime = new Date().getTime() - startTime;
+          
+          if (elapsedTime <= allowedTime && Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
+            if (distX > 0) {
+              prevSuccessSlide(); // Swipe right -> previous slide
+            } else {
+              nextSuccessSlide(); // Swipe left -> next slide
+            }
+          }
+        });
+      }
+
+      // Auto-scroll mejorado
+      let successAutoSlide = setInterval(nextSuccessSlide, 6000);
+
+      // Pausar auto-scroll al interactuar
       if (successCarouselContainer) {
         successCarouselContainer.addEventListener('mouseenter', () => {
           clearInterval(successAutoSlide);
         });
 
         successCarouselContainer.addEventListener('mouseleave', () => {
-          successAutoSlide = setInterval(nextSuccessSlide, 5000);
+          clearInterval(successAutoSlide);
+          successAutoSlide = setInterval(nextSuccessSlide, 6000);
+        });
+
+        // Pausar en touch para móviles
+        successCarouselContainer.addEventListener('touchstart', () => {
+          clearInterval(successAutoSlide);
+        });
+
+        successCarouselContainer.addEventListener('touchend', () => {
+          clearInterval(successAutoSlide);
+          successAutoSlide = setInterval(nextSuccessSlide, 6000);
         });
       }
 
-      // Responsive
+      // Responsive mejorado
       let resizeTimeout;
       window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(updateSuccessCarousel, 250);
+        resizeTimeout = setTimeout(() => {
+          updateSuccessCarousel();
+        }, 100);
       });
 
       // Inicializar
       updateSuccessCarousel();
       
-      console.log('Carrusel de casos de éxito inicializado');
+      console.log('Carrusel de casos de éxito inicializado para móvil');
     });
   </script>
 </body>
