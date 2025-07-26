@@ -8,7 +8,12 @@
     "dev": "node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "nodemailer": "^6.9.8"
   },
   "engines": {
     "node": "18.x"
@@ -17,15 +22,10 @@
     "zerogap",
     "optyges",
     "ingenieria",
-    "logistica"
-  ],
-  "author": "Zerogap by Optyges",
-  "license": "MIT"
-}
-    "ingenieria",
     "logistica",
     "optimizacion"
   ],
   "author": "Zerogap by Optyges",
   "license": "MIT"
+}
 }

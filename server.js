@@ -46,7 +46,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Servir archivos estáticos con mejores headers para móviles
+// Servir archivos estáticos
 app.use(express.static(path.join(__dirname), {
   maxAge: '1d',
   etag: true,
@@ -132,7 +132,6 @@ app.post('/send-contact', async (req, res) => {
     };
 
     console.log('📬 Enviando email...');
-
     const info = await transporter.sendMail(mailOptions);
     console.log('✅ Email enviado correctamente:', info.messageId);
     
@@ -176,31 +175,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`🚀 Zerogap site running on port ${PORT}`);
-  console.log(`📱 Local: http://localhost:${PORT}`);
-});
-
-module.exports = app;
-app.listen(PORT, () => {
-  console.log(`🚀 Zerogap site running on port ${PORT}`);
-  console.log(`📱 Local: http://localhost:${PORT}`);
-});
-
-module.exports = app;
-      responseCode: error.responseCode,
-      stack: error.stack
-    });
-    
-    res.status(500).json({ 
-      success: false, 
-      error: 'Error interno del servidor: ' + error.message 
-    });
-  }
-});
-
-// Middleware para mejor manejo de errores en móviles
+// Middleware de manejo de errores
 app.use((err, req, res, next) => {
   console.error('Error:', err);
   res.status(500).json({ error: 'Error interno del servidor' });
@@ -210,18 +185,6 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`🚀 Zerogap site running on port ${PORT}`);
   console.log(`📱 Local: http://localhost:${PORT}`);
-});
-
-// Servir archivos estáticos
-app.use(express.static(path.join(__dirname, '.')));
-
-// Redirigir todas las rutas a index.html para SPA
-app.get('*', (req, res) => {
-  // Si es un archivo específico, servirlo directamente
-  if (req.path.includes('.')) {
-    return res.status(404).send('Archivo no encontrado');
-  }
-  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 module.exports = app;
