@@ -176,13 +176,13 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Middleware de manejo de errores
-app.use((err, req, res, next) => {
-  console.error('Error:', err);
-  res.status(500).json({ error: 'Error interno del servidor' });
+// Iniciar servidor
+app.listen(PORT, () => {
+  console.log(`🚀 Zerogap site running on port ${PORT}`);
+  console.log(`📱 Local: http://localhost:${PORT}`);
 });
 
-// Iniciar servidor
+module.exports = app;
 app.listen(PORT, () => {
   console.log(`🚀 Zerogap site running on port ${PORT}`);
   console.log(`📱 Local: http://localhost:${PORT}`);
