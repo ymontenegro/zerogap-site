@@ -40,7 +40,7 @@ app.use(helmet({
   }
 }));
 
-// Compresión GZIP
+// Middleware básico
 app.use(compression());
 app.use(cors());
 app.use(express.json());
@@ -48,13 +48,11 @@ app.use(express.urlencoded({ extended: true }));
 
 // Servir archivos estáticos con mejores headers para móviles
 app.use(express.static(path.join(__dirname), {
-  maxAge: '1d', // Reducir cache para development
+  maxAge: '1d',
   etag: true,
   setHeaders: function (res, path, stat) {
-    // Headers específicos para móviles
     res.set('Cache-Control', 'public, max-age=86400');
     
-    // Headers para mejor compatibilidad móvil
     if (path.endsWith('.css')) {
       res.set('Content-Type', 'text/css; charset=utf-8');
     }
@@ -67,42 +65,6 @@ app.use(express.static(path.join(__dirname), {
   }
 }));
 
-// Configurar tipos MIME
-app.use((req, res, next) => {
-  if (req.path.endsWith('.css')) {
-    res.type('text/css');
-  } else if (req.path.endsWith('.js')) {
-    res.type('application/javascript');
-  }
-  next();
-});
-
-// Rutas para las páginas
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.get('/what-we-do', (req, res) => {
-  res.sendFile(path.join(__dirname, 'what-we-do.html'));
-});
-
-app.get('/success-cases', (req, res) => {
-  res.sendFile(path.join(__dirname, 'success-cases.html'));
-});
-
-app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, 'about.html'));
-});
-
-app.get('/contact', (req, res) => {
-  res.sendFile(path.join(__dirname, 'contact.html'));
-});
-
-// Redirigir todas las rutas no encontradas al index
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-
 // Endpoint para formulario de contacto
 app.post('/send-contact', async (req, res) => {
   try {
@@ -110,7 +72,6 @@ app.post('/send-contact', async (req, res) => {
     
     const { from_name, company, reply_to, phone, sector, subject, message } = req.body;
 
-    // Validar campos requeridos
     if (!from_name || !reply_to || !subject || !message) {
       console.log('❌ Faltan campos obligatorios');
       return res.status(400).json({ 
@@ -119,7 +80,6 @@ app.post('/send-contact', async (req, res) => {
       });
     }
 
-    // Verificar configuración del transportador
     if (!process.env.GMAIL_APP_PASSWORD) {
       console.error('❌ GMAIL_APP_PASSWORD no está configurado');
       return res.status(500).json({ 
@@ -128,9 +88,6 @@ app.post('/send-contact', async (req, res) => {
       });
     }
 
-    console.log('🔧 Configuración de Gmail encontrada');
-
-    // Verificar conexión del transportador
     try {
       await transporter.verify();
       console.log('✅ Conexión SMTP verificada');
@@ -142,7 +99,6 @@ app.post('/send-contact', async (req, res) => {
       });
     }
 
-    // Configurar el email
     const mailOptions = {
       from: process.env.GMAIL_USER || 'yerko@zerogap.cl',
       to: 'yerko@zerogap.cl',
@@ -177,18 +133,62 @@ app.post('/send-contact', async (req, res) => {
 
     console.log('📬 Enviando email...');
 
-    // Enviar el email
     const info = await transporter.sendMail(mailOptions);
     console.log('✅ Email enviado correctamente:', info.messageId);
     
     res.json({ success: true, message: 'Email enviado correctamente' });
     
   } catch (error) {
-    console.error('❌ Error completo enviando email:', {
-      message: error.message,
-      code: error.code,
-      command: error.command,
-      response: error.response,
+    console.error('❌ Error enviando email:', error.message);
+    res.status(500).json({ 
+      success: false, 
+      error: 'Error interno del servidor: ' + error.message 
+    });
+  }
+});
+
+// Rutas para páginas específicas
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.get('/what-we-do', (req, res) => {
+  res.sendFile(path.join(__dirname, 'what-we-do.html'));
+});
+
+app.get('/success-cases', (req, res) => {
+  res.sendFile(path.join(__dirname, 'success-cases.html'));
+});
+
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'about.html'));
+});
+
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, 'contact.html'));
+});
+
+// Catch-all para otras rutas
+app.get('*', (req, res) => {
+  if (req.path.includes('.')) {
+    return res.status(404).send('Archivo no encontrado');
+  }
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Middleware de manejo de errores
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({ error: 'Error interno del servidor' });
+});
+
+// Iniciar servidor
+app.listen(PORT, () => {
+  console.log(`🚀 Zerogap site running on port ${PORT}`);
+  console.log(`📱 Local: http://localhost:${PORT}`);
+});
+
+module.exports = app;
       responseCode: error.responseCode,
       stack: error.stack
     });
