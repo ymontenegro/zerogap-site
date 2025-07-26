@@ -31,6 +31,14 @@ echo -e "${YELLOW}Verificando estado del repositorio...${NC}"
 if [ ! -d ".git" ]; then
     echo "Inicializando repositorio Git..."
     git init
+    git branch -M main
+fi
+
+# Verificar branch principal
+CURRENT_BRANCH=$(git branch --show-current)
+if [ "$CURRENT_BRANCH" != "main" ]; then
+    echo "Cambiando a branch main..."
+    git checkout -b main 2>/dev/null || git checkout main
 fi
 
 # Agregar archivos al staging
@@ -69,9 +77,9 @@ if [ ! -d "node_modules" ]; then
     npm install
 fi
 
-# Desplegar a Heroku
+# Desplegar a Heroku (usar main branch específicamente)
 echo -e "${YELLOW}Desplegando a Heroku...${NC}"
-git push heroku main 2>/dev/null || git push heroku master
+git push heroku main
 
 # Verificar el estado del despliegue
 if [ $? -eq 0 ]; then
