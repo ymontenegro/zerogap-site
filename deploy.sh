@@ -41,6 +41,21 @@ if [ "$CURRENT_BRANCH" != "main" ]; then
     git checkout -b main 2>/dev/null || git checkout main
 fi
 
+# Limpiar y reinstalar dependencias para sincronizar package-lock.json
+echo -e "${YELLOW}Sincronizando dependencias...${NC}"
+if [ -f "package-lock.json" ]; then
+    echo "Eliminando package-lock.json existente..."
+    rm package-lock.json
+fi
+
+if [ -d "node_modules" ]; then
+    echo "Eliminando node_modules existente..."
+    rm -rf node_modules
+fi
+
+echo "Instalando dependencias frescas..."
+npm install
+
 # Agregar archivos al staging
 echo "Agregando archivos..."
 git add .
@@ -68,13 +83,6 @@ if git remote get-url heroku &> /dev/null; then
 else
     echo "Agregando remote de Heroku..."
     heroku git:remote -a $APP_NAME
-fi
-
-# Instalar dependencias localmente para verificar
-echo -e "${YELLOW}Verificando dependencias...${NC}"
-if [ ! -d "node_modules" ]; then
-    echo "Instalando dependencias..."
-    npm install
 fi
 
 # Desplegar a Heroku (usar main branch específicamente)
