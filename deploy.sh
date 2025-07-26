@@ -41,6 +41,15 @@ if [ "$CURRENT_BRANCH" != "main" ]; then
     git checkout -b main 2>/dev/null || git checkout main
 fi
 
+# Validar package.json antes de continuar
+echo -e "${YELLOW}Validando package.json...${NC}"
+if ! node -e "JSON.parse(require('fs').readFileSync('package.json', 'utf8'))" 2>/dev/null; then
+    echo -e "${RED}❌ Error: package.json tiene errores de sintaxis${NC}"
+    echo "Por favor, verifica la sintaxis del archivo package.json"
+    exit 1
+fi
+echo -e "${GREEN}✅ package.json válido${NC}"
+
 # Limpiar y reinstalar dependencias para sincronizar package-lock.json
 echo -e "${YELLOW}Sincronizando dependencias...${NC}"
 if [ -f "package-lock.json" ]; then
@@ -55,6 +64,11 @@ fi
 
 echo "Instalando dependencias frescas..."
 npm install
+
+if [ $? -ne 0 ]; then
+    echo -e "${RED}❌ Error instalando dependencias${NC}"
+    exit 1
+fi
 
 # Agregar archivos al staging
 echo "Agregando archivos..."
