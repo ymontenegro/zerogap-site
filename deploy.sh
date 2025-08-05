@@ -99,9 +99,13 @@ else
     heroku git:remote -a $APP_NAME
 fi
 
-# Desplegar a Heroku (usar main branch específicamente)
+# Sincronizar con el remote de Heroku si está detrás
+echo -e "${YELLOW}Sincronizando con Heroku remote...${NC}"
+git fetch heroku main 2>/dev/null || echo "No hay commits previos en Heroku"
+
+# Forzar push si es necesario (para resolver conflictos)
 echo -e "${YELLOW}Desplegando a Heroku...${NC}"
-git push heroku main
+git push heroku main --force
 
 # Verificar el estado del despliegue
 if [ $? -eq 0 ]; then
