@@ -7,21 +7,37 @@
   <!-- Enlaces a Google Fonts para replicar la tipografía original -->
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
   <!-- Remover EmailJS SDK ya no es necesario -->
   <meta name="description" content="Contáctate con Zerogap para llevar tus operaciones al siguiente nivel y descubrir soluciones logísticas de vanguardia.">
 </head>
 <body>
+  <!-- Scroll progress indicator -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- Navegación común -->
   <header>
     <div class="nav-container">
       <a href="index.html" class="logo"><img src="images/logo.png" alt="Logotipo Zerogap"></a>
-      <nav>
+
+      <!-- Botón hamburguesa para móvil -->
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav id="navMenu">
         <a href="what-we-do.html">Qué hacemos</a>
         <a href="success-cases.html">Casos de éxito</a>
+        <a href="asicam.html">ASICAM</a>
         <a href="about.html">Acerca de</a>
         <a href="contact.html" class="active">Contacto</a>
       </nav>
     </div>
+
+    <!-- Overlay para cerrar menú en móvil -->
+    <div class="menu-overlay" id="menuOverlay"></div>
   </header>
 
   <main>
@@ -161,6 +177,95 @@
   </footer>
 
   <script>
+    // Header scroll effect
+    const header = document.querySelector('header');
+    const scrollProgress = document.getElementById('scrollProgress');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      // Header glassmorphism effect
+      if (currentScroll > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      // Scroll progress indicator
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (currentScroll / scrollHeight) * 100;
+      scrollProgress.style.width = scrolled + '%';
+
+      lastScroll = currentScroll;
+    });
+
+    // Intersection Observer for reveal animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section');
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    });
+
+    // Menú hamburguesa móvil
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menuToggle');
+      const navMenu = document.getElementById('navMenu');
+      const menuOverlay = document.getElementById('menuOverlay');
+      const body = document.body;
+
+      function toggleMenu() {
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+      }
+
+      function closeMenu() {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        body.style.overflow = '';
+      }
+
+      if (menuToggle) {
+        menuToggle.addEventListener('click', toggleMenu);
+      }
+
+      if (menuOverlay) {
+        menuOverlay.addEventListener('click', closeMenu);
+      }
+
+      // Cerrar menú al hacer click en un enlace
+      const navLinks = navMenu.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      // Cerrar menú con tecla ESC
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+          closeMenu();
+        }
+      });
+    });
+
     // Manejar el envío del formulario con backend SMTP
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();

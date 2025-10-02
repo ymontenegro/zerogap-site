@@ -4,29 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Qué hacemos - Zerogap</title>
-  <!-- Enlaces a Google Fonts para replicar la tipografía original -->
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Modern Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
   <meta name="description" content="Descubre cómo transformamos desafíos complejos en ventajas competitivas a través de cuatro pilares fundamentales de ingeniería avanzada.">
 </head>
 <body>
+  <!-- Scroll progress indicator -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <header>
     <div class="nav-container">
       <a href="index.html" class="logo"><img src="images/logo.png" alt="Logotipo Zerogap"></a>
-      <nav>
+
+      <!-- Botón hamburguesa para móvil -->
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav id="navMenu">
         <a href="what-we-do.html" class="active">Qué hacemos</a>
         <a href="success-cases.html">Casos de éxito</a>
+        <a href="asicam.html">ASICAM</a>
         <a href="about.html">Acerca de</a>
         <a href="contact.html">Contacto</a>
       </nav>
     </div>
+
+    <!-- Overlay para cerrar menú en móvil -->
+    <div class="menu-overlay" id="menuOverlay"></div>
   </header>
 
   <main>
     <!-- Hero de página interna -->
     <section id="page-hero">
       <div class="hero-content">
-        <h1>Qué hacemos</h1>
+        <h1 class="hero-title">Qué hacemos</h1>
         <p class="hero-subtitle">
           Transformamos desafíos complejos en ventajas competitivas a través de cuatro pilares fundamentales
         </p>
@@ -35,13 +51,13 @@
 
     <!-- Sección Qué hacemos -->
     <section id="what-we-do">
-      <div class="container">
-        <div class="pillars-container">
-          <!-- Pilar 1: Sistemas de optimización -->
-          <div class="pillar-card">
-            <div class="pillar-icon">
-              <img src="images/optimization-systems.jpg" alt="Sistemas de Optimización">
-            </div>
+      <div class="pillars-grid">
+        <!-- Pilar 1: Sistemas de optimización -->
+        <div class="pillar-card">
+          <div class="pillar-image">
+            <img src="images/optimization-systems.jpg" alt="Sistemas de Optimización">
+          </div>
+          <div class="pillar-content">
             <h3>Sistemas de Optimización Avanzada</h3>
             <p>
               Diseño, desarrollo e implementación de sistemas de optimización basados en analítica avanzada, machine learning, IoT y modelamiento matemático para maximizar la eficiencia operacional.
@@ -53,12 +69,14 @@
               <li>Modelos matemáticos de vanguardia</li>
             </ul>
           </div>
+        </div>
 
-          <!-- Pilar 2: Consultoría y reingeniería -->
-          <div class="pillar-card">
-            <div class="pillar-icon">
-              <img src="images/process-consulting.jpg" alt="Consultoría de Procesos">
-            </div>
+        <!-- Pilar 2: Consultoría y reingeniería -->
+        <div class="pillar-card">
+          <div class="pillar-image">
+            <img src="images/process-consulting.jpg" alt="Consultoría de Procesos">
+          </div>
+          <div class="pillar-content">
             <h3>Consultoría y Reingeniería</h3>
             <p>
               Consultoría y reingeniería de procesos, con foco en transformar cada decisión operativa en una ventaja competitiva sostenible y medible.
@@ -70,12 +88,14 @@
               <li>Transferencia de conocimiento</li>
             </ul>
           </div>
+        </div>
 
-          <!-- Pilar 3: Soluciones de ciclo completo -->
-          <div class="pillar-card">
-            <div class="pillar-icon">
-              <img src="images/complete-cycle.jpg" alt="Ciclo Completo">
-            </div>
+        <!-- Pilar 3: Soluciones de ciclo completo -->
+        <div class="pillar-card">
+          <div class="pillar-image">
+            <img src="images/complete-cycle.jpg" alt="Ciclo Completo">
+          </div>
+          <div class="pillar-content">
             <h3>Soluciones de Ciclo Completo</h3>
             <p>
               Desde la consultoría y el modelado, pasando por el desarrollo de software, hasta la transferencia, puesta en marcha y mantenimiento de soluciones robustas.
@@ -87,12 +107,14 @@
               <li>Soporte y mantenimiento continuo</li>
             </ul>
           </div>
+        </div>
 
-          <!-- Pilar 4: Resultados tangibles -->
-          <div class="pillar-card">
-            <div class="pillar-icon">
-              <img src="images/measurable-results.jpg" alt="Resultados Medibles">
-            </div>
+        <!-- Pilar 4: Resultados tangibles -->
+        <div class="pillar-card">
+          <div class="pillar-image">
+            <img src="images/measurable-results.jpg" alt="Resultados Medibles">
+          </div>
+          <div class="pillar-content">
             <h3>Resultados Tangibles</h3>
             <p>
               Enfoque en resultados tangibles y ROI medible, con reconocimientos internacionales y casos de éxito exportados a Latinoamérica y el mundo.
@@ -110,36 +132,34 @@
 
     <!-- Sección de metodología -->
     <section id="methodology">
-      <div class="container">
-        <h2>Nuestra metodología</h2>
-        <p class="section-intro">
-          Un enfoque estructurado que garantiza resultados excepcionales en cada proyecto
-        </p>
-        
-        <div class="methodology-steps">
-          <div class="step-item">
-            <div class="step-number">01</div>
-            <h3>Diagnóstico</h3>
-            <p>Análisis profundo de la situación actual, identificación de oportunidades y definición de objetivos medibles.</p>
-          </div>
-          
-          <div class="step-item">
-            <div class="step-number">02</div>
-            <h3>Diseño</h3>
-            <p>Desarrollo de soluciones a medida utilizando las mejores prácticas y tecnologías de vanguardia.</p>
-          </div>
-          
-          <div class="step-item">
-            <div class="step-number">03</div>
-            <h3>Implementación</h3>
-            <p>Despliegue controlado con acompañamiento continuo y transferencia de conocimiento al equipo interno.</p>
-          </div>
-          
-          <div class="step-item">
-            <div class="step-number">04</div>
-            <h3>Optimización</h3>
-            <p>Monitoreo continuo, ajustes basados en datos reales y mejora continua de los resultados.</p>
-          </div>
+      <h2>Nuestra metodología</h2>
+      <p class="section-intro">
+        Un enfoque estructurado que garantiza resultados excepcionales en cada proyecto
+      </p>
+
+      <div class="methodology-grid">
+        <div class="step-item">
+          <div class="step-number">01</div>
+          <h3>Diagnóstico</h3>
+          <p>Análisis profundo de la situación actual, identificación de oportunidades y definición de objetivos medibles.</p>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">02</div>
+          <h3>Diseño</h3>
+          <p>Desarrollo de soluciones a medida utilizando las mejores prácticas y tecnologías de vanguardia.</p>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">03</div>
+          <h3>Implementación</h3>
+          <p>Despliegue controlado con acompañamiento continuo y transferencia de conocimiento al equipo interno.</p>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">04</div>
+          <h3>Optimización</h3>
+          <p>Monitoreo continuo, ajustes basados en datos reales y mejora continua de los resultados.</p>
         </div>
       </div>
     </section>
@@ -163,5 +183,97 @@
       <p><a href="https://wa.me/56939100549" target="_blank">WhatsApp</a> | <a href="mailto:contacto@zerogap.cl">contacto@zerogap.cl</a></p>
     </div>
   </footer>
+
+  <!-- JavaScript optimizado para móviles -->
+  <script>
+    // Header scroll effect
+    const header = document.querySelector('header');
+    const scrollProgress = document.getElementById('scrollProgress');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      // Header glassmorphism effect
+      if (currentScroll > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      // Scroll progress indicator
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (currentScroll / scrollHeight) * 100;
+      scrollProgress.style.width = scrolled + '%';
+
+      lastScroll = currentScroll;
+    });
+
+    // Intersection Observer for reveal animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section');
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    });
+
+    // Menú hamburguesa móvil
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menuToggle');
+      const navMenu = document.getElementById('navMenu');
+      const menuOverlay = document.getElementById('menuOverlay');
+      const body = document.body;
+
+      function toggleMenu() {
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+      }
+
+      function closeMenu() {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        body.style.overflow = '';
+      }
+
+      if (menuToggle) {
+        menuToggle.addEventListener('click', toggleMenu);
+      }
+
+      if (menuOverlay) {
+        menuOverlay.addEventListener('click', closeMenu);
+      }
+
+      // Cerrar menú al hacer click en un enlace
+      const navLinks = navMenu.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      // Cerrar menú con tecla ESC
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+          closeMenu();
+        }
+      });
+    });
+  </script>
 </body>
 </html>

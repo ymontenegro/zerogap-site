@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zerogap</title>
-  <!-- Enlaces a Google Fonts para replicar la tipografía original -->
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <title>Zerogap - Ingeniería Avanzada para Operaciones Industriales</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
   <meta name="description" content="Soluciones de ingeniería avanzada para la logística en minería, industria forestal, portuaria y otros sectores industriales.">
 </head>
 <body>
+  <!-- Scroll progress indicator -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <header>
     <div class="nav-container">
       <a href="index.html" class="logo"><img src="images/logo.png" alt="Logotipo Zerogap"></a>
@@ -24,6 +26,7 @@
       <nav id="navMenu">
         <a href="what-we-do.html">Qué hacemos</a>
         <a href="success-cases.html">Casos de éxito</a>
+        <a href="asicam.html">ASICAM</a>
         <a href="about.html">Acerca de</a>
         <a href="contact.html">Contacto</a>
       </nav>
@@ -66,33 +69,46 @@
           </div>
         </div>
 
-        <a href="about.html" class="btn">Conoce más sobre nosotros</a>
+        <a href="about.html" class="btn"><span>Conoce más sobre nosotros</span></a>
       </div>
     </section>
 
     <!-- Sección de servicios -->
     <section id="services">
       <h2>Nuestros servicios</h2>
-      <div class="card-container">
-        <!-- Servicio 1 -->
-        <div class="card">
+
+      <!-- Servicio 1 -->
+      <div class="service-item" style="background-image: url('images/service1.jpg');">
+        <div class="service-image">
           <img src="images/service1.jpg" alt="Optimización de Cadenas de Suministro">
+        </div>
+        <div class="service-content">
           <h3>Optimización de Cadenas de Suministro</h3>
           <p>
             Proveemos herramientas de optimización y simulación que integran datos de su cadena de suministro para entregar las mejores decisiones en procesos de planificación de producción, distribución y abastecimiento. Diseñamos en forma conjunta con nuestros clientes soluciones que mejoran el nivel de servicio, minimizan costos y reducen emisiones de CO<sub>2</sub>.
           </p>
         </div>
-        <!-- Servicio 2 -->
-        <div class="card">
+      </div>
+
+      <!-- Servicio 2 -->
+      <div class="service-item" style="background-image: url('images/service2.jpg');">
+        <div class="service-image">
           <img src="images/service2.jpg" alt="Sistemas Inteligentes de Gestión Logística">
+        </div>
+        <div class="service-content">
           <h3>Sistemas Inteligentes de Gestión Logística</h3>
           <p>
             Desarrollamos sistemas inteligentes que permiten automatizar la recolección de información, combinando IoT con herramientas de <em>machine learning</em>. Modelamos y analizamos sus datos con nuestros algoritmos para predecir niveles de producción o consumo y optimizamos la operación utilizando modelos matemáticos de vanguardia.
           </p>
         </div>
-        <!-- Servicio 3 -->
-        <div class="card">
+      </div>
+
+      <!-- Servicio 3 -->
+      <div class="service-item" style="background-image: url('images/service3.jpg');">
+        <div class="service-image">
           <img src="images/service3.jpg" alt="Consultoría en Ingeniería Aplicada">
+        </div>
+        <div class="service-content">
           <h3>Consultoría en Ingeniería Aplicada</h3>
           <p>
             Nuestros expertos en operaciones e ingeniería de transporte los acompañan en la definición de procedimientos y estándares de diseño para procesos productivos y operaciones de transporte. Implementamos conceptos y tecnologías innovadoras para resolver problemas complejos en la industria.
@@ -104,30 +120,64 @@
     <!-- Sección Suite Forestal -->
     <section id="suite">
       <h2>Suite Forestal</h2>
-      <div class="suite-container">
-        <!-- Planex -->
-        <div class="suite-card">
-          <img src="images/suite1.jpg" alt="Planex" class="circle-img">
-          <h3>PLANEX</h3>
-          <p>
-            Sistema que apoya el diseño de la red de caminos forestales para el transporte de madera, minimizando de forma conjunta los costos de construcción y mantención de caminos, y los costos de cosecha asociados a la productividad según distancias de madereo, pendiente del terreno, entre otros factores.
-          </p>
+
+      <div class="suite-carousel-container">
+        <!-- Botones laterales -->
+        <button class="suite-carousel-btn prev-suite" aria-label="Anterior">‹</button>
+        <button class="suite-carousel-btn next-suite" aria-label="Siguiente">›</button>
+
+        <div class="suite-carousel-wrapper">
+          <div class="suite-carousel-track">
+
+            <!-- Planex -->
+            <div class="service-item">
+              <div class="service-image">
+                <img src="images/suite1.jpg" alt="Planex">
+              </div>
+              <div class="service-content">
+                <h3>PLANEX</h3>
+                <p>
+                  Sistema que apoya el diseño de la red de caminos forestales para el transporte de madera, minimizando de forma conjunta los costos de construcción y mantención de caminos, y los costos de cosecha asociados a la productividad según distancias de madereo, pendiente del terreno, entre otros factores.
+                </p>
+              </div>
+            </div>
+
+            <!-- Opticort -->
+            <div class="service-item">
+              <div class="service-image">
+                <img src="images/suite2.jpg" alt="Opticort">
+              </div>
+              <div class="service-content">
+                <h3>OPTICORT</h3>
+                <p>
+                  Sistema de planificación de corto plazo (3 a 12 meses) que maximiza el valor forestal al buscar el mejor destino para cada tipo de bosque, eligiendo los mejores productos para cada rodal y minimizando los costos operacionales, considerando productividades por tipo de equipo y costos de traslado entre bosques.
+                </p>
+              </div>
+            </div>
+
+            <!-- Asicam -->
+            <div class="service-item">
+              <div class="service-image">
+                <img src="images/suite3.jpg" alt="Asicam">
+              </div>
+              <div class="service-content">
+                <h3>ASICAM</h3>
+                <p>
+                  Sistema que programa el trabajo diario de los camiones y grúas de carga, considerando múltiples orígenes en el bosque y destinos de descarga. Maximiza la productividad de los equipos, minimiza los tiempos de cola y reduce los tiempos muertos.
+                </p>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <!-- Opticort -->
-        <div class="suite-card">
-          <img src="images/suite2.jpg" alt="Opticort" class="circle-img">
-          <h3>OPTICORT</h3>
-          <p>
-            Sistema de planificación de corto plazo (3 a 12 meses) que maximiza el valor forestal al buscar el mejor destino para cada tipo de bosque, eligiendo los mejores productos para cada rodal y minimizando los costos operacionales, considerando productividades por tipo de equipo y costos de traslado entre bosques.
-          </p>
-        </div>
-        <!-- Asicam -->
-        <div class="suite-card">
-          <img src="images/suite3.jpg" alt="Asicam" class="circle-img">
-          <h3>ASICAM</h3>
-          <p>
-            Sistema que programa el trabajo diario de los camiones y grúas de carga, considerando múltiples orígenes en el bosque y destinos de descarga. Maximiza la productividad de los equipos, minimiza los tiempos de cola y reduce los tiempos muertos.
-          </p>
+
+        <!-- Dots indicadores -->
+        <div class="suite-carousel-controls">
+          <div class="suite-carousel-dots">
+            <span class="suite-dot active" data-slide="0"></span>
+            <span class="suite-dot" data-slide="1"></span>
+            <span class="suite-dot" data-slide="2"></span>
+          </div>
         </div>
       </div>
     </section>
@@ -220,7 +270,7 @@
         <p>
           Cuéntanos sobre tu proyecto y descubre cómo podemos ayudarte a optimizar tus procesos logísticos.
         </p>
-        <a href="contact.html" class="btn">Contáctanos</a>
+        <a href="contact.html" class="btn btn-primary"><span>Contáctanos</span></a>
       </div>
     </section>
   </main>
@@ -236,6 +286,141 @@
 
   <!-- JavaScript optimizado para móviles -->
   <script>
+    // Header scroll effect
+    const header = document.querySelector('header');
+    const scrollProgress = document.getElementById('scrollProgress');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      // Header glassmorphism effect
+      if (currentScroll > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      // Scroll progress indicator
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (currentScroll / scrollHeight) * 100;
+      scrollProgress.style.width = scrolled + '%';
+
+      lastScroll = currentScroll;
+    });
+
+    // Intersection Observer for reveal animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section');
+      sections.forEach((section, index) => {
+        if (section.id !== 'hero') {
+          observer.observe(section);
+        }
+      });
+    });
+
+    // Carrusel Suite Forestal
+    document.addEventListener('DOMContentLoaded', () => {
+      const track = document.querySelector('.suite-carousel-track');
+      const slides = document.querySelectorAll('#suite .service-item');
+      const prevBtn = document.querySelector('.prev-suite');
+      const nextBtn = document.querySelector('.next-suite');
+      const dots = document.querySelectorAll('.suite-dot');
+
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+
+      function updateCarousel() {
+        // Mover el track
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Actualizar dots
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentSlide);
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      }
+
+      // Event listeners
+      if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+      if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+      // Dots navigation
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          currentSlide = parseInt(dot.dataset.slide);
+          updateCarousel();
+        });
+      });
+
+      // Auto-play (opcional)
+      let autoplayInterval = setInterval(nextSlide, 5000);
+
+      // Pausar autoplay en hover
+      const carouselContainer = document.querySelector('.suite-carousel-container');
+      if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => {
+          clearInterval(autoplayInterval);
+        });
+
+        carouselContainer.addEventListener('mouseleave', () => {
+          autoplayInterval = setInterval(nextSlide, 5000);
+        });
+      }
+
+      // Soporte para swipe en móvil
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+
+      function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+          nextSlide();
+        }
+        if (touchEndX > touchStartX + 50) {
+          prevSlide();
+        }
+      }
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+      });
+    });
+
     // Verificar que todo esté cargado antes de ejecutar
     document.addEventListener('DOMContentLoaded', function() {
       console.log('DOM cargado correctamente');
