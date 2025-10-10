@@ -4,12 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casos de éxito - Zerogap</title>
-  <!-- Enlaces a Google Fonts para replicar la tipografía original -->
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Tipografía moderna coherente con el landing -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
   <meta name="description" content="Descubre casos reales donde hemos transformado problemas complejos en ventajas competitivas medibles.">
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <header>
     <div class="nav-container">
       <a href="index.html" class="logo"><img src="images/logo.png" alt="Logotipo Zerogap"></a>
@@ -201,6 +204,48 @@
   </footer>
 
   <script>
+    // Header scroll effect y barra de progreso
+    const header = document.querySelector('header');
+    const scrollProgress = document.getElementById('scrollProgress');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      if (header) {
+        if (currentScroll > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }
+
+      if (scrollProgress) {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = scrollHeight > 0 ? (currentScroll / scrollHeight) * 100 : 0;
+        scrollProgress.style.width = scrolled + '%';
+      }
+    });
+
+    // Intersection Observer para animaciones on-scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => observer.observe(section));
+    });
+
     // Carrusel de casos de éxito mejorado para móviles
     document.addEventListener('DOMContentLoaded', function() {
       let successCurrentSlide = 0;
@@ -385,38 +430,42 @@
       const navMenu = document.getElementById('navMenu');
       const menuOverlay = document.getElementById('menuOverlay');
       const body = document.body;
-      
+
       function toggleMenu() {
+        if (!menuToggle || !navMenu || !menuOverlay) return;
+
         menuToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
         menuOverlay.classList.toggle('active');
         body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
       }
-      
+
       function closeMenu() {
+        if (!menuToggle || !navMenu || !menuOverlay) return;
+
         menuToggle.classList.remove('active');
         navMenu.classList.remove('active');
         menuOverlay.classList.remove('active');
         body.style.overflow = '';
       }
-      
+
       if (menuToggle) {
         menuToggle.addEventListener('click', toggleMenu);
       }
-      
+
       if (menuOverlay) {
         menuOverlay.addEventListener('click', closeMenu);
       }
-      
-      // Cerrar menú al hacer click en un enlace
-      const navLinks = navMenu.querySelectorAll('a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
-      });
-      
-      // Cerrar menú con tecla ESC
+
+      if (navMenu) {
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', closeMenu);
+        });
+      }
+
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
           closeMenu();
         }
       });
