@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ASICAM - Sistema de Asignación de Camiones | Zerogap</title>
   <!-- Fuentes y estilos -->
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
   <meta name="description" content="ASICAM es un sistema de software especializado para la asignación óptima de camiones en operaciones logísticas, con más de 30 años de desarrollo continuo.">
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- Navegación común -->
   <header>
     <div class="nav-container">
@@ -169,27 +172,87 @@
     </div>
   </footer>
 
-  <!-- Script para menú móvil -->
+  <!-- Script para menú móvil y animaciones -->
   <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    const menuOverlay = document.getElementById('menuOverlay');
+    const header = document.querySelector('header');
+    const scrollProgress = document.getElementById('scrollProgress');
 
-    function toggleMenu() {
-      menuToggle.classList.toggle('active');
-      navMenu.classList.toggle('active');
-      menuOverlay.classList.toggle('active');
-      document.body.classList.toggle('menu-open');
-    }
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
 
-    menuToggle.addEventListener('click', toggleMenu);
-    menuOverlay.addEventListener('click', toggleMenu);
+      if (header) {
+        if (currentScroll > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }
 
-    // Cerrar menú al hacer click en un enlace
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (navMenu.classList.contains('active')) {
-          toggleMenu();
+      if (scrollProgress) {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = scrollHeight > 0 ? (currentScroll / scrollHeight) * 100 : 0;
+        scrollProgress.style.width = scrolled + '%';
+      }
+    });
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => observer.observe(section));
+
+      const menuToggle = document.getElementById('menuToggle');
+      const navMenu = document.getElementById('navMenu');
+      const menuOverlay = document.getElementById('menuOverlay');
+      const body = document.body;
+
+      function toggleMenu() {
+        if (!menuToggle || !navMenu || !menuOverlay) return;
+
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+      }
+
+      function closeMenu() {
+        if (!menuToggle || !navMenu || !menuOverlay) return;
+
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        body.style.overflow = '';
+      }
+
+      if (menuToggle) {
+        menuToggle.addEventListener('click', toggleMenu);
+      }
+
+      if (menuOverlay) {
+        menuOverlay.addEventListener('click', closeMenu);
+      }
+
+      if (navMenu) {
+        navMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', closeMenu);
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
+          closeMenu();
         }
       });
     });
