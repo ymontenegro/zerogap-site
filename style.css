@@ -3637,3 +3637,203 @@ img {
     gap: var(--space-lg);
   }
 }
+/* ====================================
+   RESPALDO ACADÉMICO
+   ==================================== */
+
+.academic-section {
+  padding: var(--space-2xl) var(--space-md);
+  background: linear-gradient(135deg, var(--light-200) 0%, #ffffff 100%);
+}
+
+.academic-section .section-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.academic-section .section-intro {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  text-align: center;
+  color: var(--text-secondary);
+  max-width: 900px;
+  margin: 0 auto var(--space-2xl);
+  line-height: 1.7;
+}
+
+.publications-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.publication-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+}
+
+.publication-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border-color: var(--primary-light);
+}
+
+.publication-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 2px solid var(--light-300);
+}
+
+.publication-header h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+  flex: 1;
+}
+
+.publication-badge {
+  background: var(--gradient-primary);
+  color: white;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.publication-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.publication-authors {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+.publication-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.publication-venue {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.publication-venue strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.publication-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.publication-link:hover {
+  color: var(--primary-dark);
+  gap: var(--space-sm);
+}
+
+.additional-refs {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--light-300);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.ref-item {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.ref-item strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.ref-item a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.ref-item a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .academic-section {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .publication-card {
+    padding: var(--space-lg);
+  }
+
+  .publication-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .publication-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .publication-badge {
+    font-size: 0.8rem;
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .publication-authors {
+    font-size: 0.85rem;
+  }
+
+  .publication-title {
+    font-size: 1rem;
+  }
+
+  .publication-venue {
+    font-size: 0.9rem;
+  }
+
+  .ref-item {
+    font-size: 0.9rem;
+  }
+}
