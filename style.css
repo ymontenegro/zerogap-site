@@ -3069,3 +3069,571 @@ img {
     padding: 30px 20px;
   }
 }
+
+/* ====================================
+   ESTILOS PARA ASICAM
+   ==================================== */
+
+/* Hero específico para ASICAM - estilos movidos a asicam-styles.css */
+
+.asicam-hero .hero-description {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  color: var(--light-200);
+  max-width: 900px;
+  margin: var(--space-md) auto 0;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+/* Soluciones por Etapa */
+.solutions-by-stage {
+  padding: var(--space-2xl) var(--space-md);
+  background: var(--light-200);
+}
+
+.solutions-by-stage .section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.solutions-by-stage .section-intro {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stage-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--light-300);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.stage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.stage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color);
+}
+
+.stage-card:hover::before {
+  transform: scaleX(1);
+}
+
+.stage-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.stage-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-md);
+  color: white;
+}
+
+.stage-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.stage-subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  display: block;
+  margin-top: 4px;
+}
+
+.stage-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.stage-focus, .stage-capability, .stage-key {
+  padding-left: var(--space-sm);
+  border-left: 3px solid var(--primary-light);
+}
+
+.stage-content h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary-color);
+  margin: 0 0 var(--space-xs) 0;
+}
+
+.stage-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Módulo Última Milla */
+.last-mile-module {
+  padding: var(--space-2xl) var(--space-md);
+  background: white;
+}
+
+.module-header {
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto var(--space-xl) auto;
+}
+
+.module-header h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.module-intro {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.last-mile-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto var(--space-xl) auto;
+}
+
+.lm-feature {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.lm-feature:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.lm-feature-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-sm);
+  color: white;
+  flex-shrink: 0;
+}
+
+.lm-feature-content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-sm) 0;
+  color: var(--text-primary);
+}
+
+.lm-feature-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.module-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.module-highlights .highlight-item {
+  background: white;
+  border-left: 4px solid var(--primary-color);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.module-highlights .highlight-item strong {
+  color: var(--primary-color);
+  font-weight: 700;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+/* Tecnología Transversal */
+.transversal-tech {
+  padding: var(--space-2xl) var(--space-md);
+  background: var(--light-200);
+}
+
+.transversal-tech .section-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.transversal-tech .section-intro {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tech-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--light-300);
+  transition: all var(--transition-base);
+  text-align: center;
+}
+
+.tech-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+.tech-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-md);
+  color: white;
+  margin: 0 auto var(--space-md) auto;
+}
+
+.tech-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-sm) 0;
+  color: var(--text-primary);
+}
+
+.tech-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Beneficios de la Integración */
+.integration-benefits {
+  padding: var(--space-2xl) var(--space-md);
+  background: linear-gradient(135deg, var(--dark-900) 0%, var(--dark-800) 100%);
+  color: var(--light-100);
+  position: relative;
+  overflow: hidden;
+}
+
+.integration-benefits::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(circle at 70% 50%, rgba(0, 102, 255, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.integration-benefits .section-title {
+  color: var(--light-100);
+  position: relative;
+  z-index: 2;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.integration-benefits .section-subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  text-align: center;
+  color: var(--light-300);
+  margin-bottom: var(--space-xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.benefit-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  z-index: -1;
+}
+
+.benefit-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-light);
+  box-shadow: 0 16px 48px rgba(0, 102, 255, 0.3);
+}
+
+.benefit-card:hover::before {
+  opacity: 0.1;
+}
+
+.benefit-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--primary-light);
+  opacity: 0.3;
+  margin-bottom: var(--space-sm);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.benefit-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-md) 0;
+  color: var(--light-100);
+}
+
+.benefit-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--light-300);
+  margin: 0;
+}
+
+/* Responsive para ASICAM */
+@media (max-width: 768px) {
+  .asicam-hero::before {
+    background-attachment: scroll;
+  }
+
+  .stages-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .stage-card {
+    padding: var(--space-lg);
+  }
+
+  .last-mile-features {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .tech-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .module-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .stage-header {
+    gap: var(--space-sm);
+  }
+
+  .stage-icon {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* ====================================
+   PREMIOS Y DISTINCIONES
+   ==================================== */
+
+.awards-section {
+  padding: var(--space-2xl) var(--space-md);
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.awards-section .section-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+}
+
+.awards-section .section-subtitle {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 500;
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: var(--space-2xl);
+}
+
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.award-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+}
+
+.award-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  border-color: var(--primary-light);
+}
+
+.award-logo {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+}
+
+.award-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(0%);
+  transition: all var(--transition-base);
+}
+
+.award-card:hover .award-logo img {
+  transform: scale(1.05);
+}
+
+.award-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-md) 0;
+  line-height: 1.3;
+}
+
+.award-card p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .awards-section {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .awards-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
