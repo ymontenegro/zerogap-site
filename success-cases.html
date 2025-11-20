@@ -191,93 +191,122 @@
           Nuestro trabajo ha sido reconocido y publicado en revistas académicas de primer nivel internacional, validando la calidad y el impacto de nuestras soluciones.
         </p>
 
-        <div class="publications-grid">
-          <!-- CSAV / Contenedores -->
-          <div class="publication-card">
-            <div class="publication-header">
-              <h3>Optimización Logística de Contenedores - CSAV</h3>
-              <span class="publication-badge">Premio Franz Edelman</span>
+        <!-- Pestañas de categorías -->
+        <div class="publications-tabs">
+          <button class="tab-btn active" data-tab="asicam">ASICAM</button>
+          <button class="tab-btn" data-tab="csav">CSAV / Contenedores</button>
+          <button class="tab-btn" data-tab="codelco">Codelco / Minería</button>
+        </div>
+
+        <!-- Contenido de pestañas -->
+        <div class="publications-content">
+
+          <!-- ASICAM -->
+          <div class="tab-content active" id="tab-asicam">
+            <div class="publication-card featured">
+              <div class="publication-header">
+                <h3>ASICAM - Sistema de Asignación de Camiones</h3>
+                <span class="publication-badge edelman">Premio Franz Edelman</span>
+              </div>
+              <div class="publication-content">
+                <p class="publication-authors">
+                  Weintraub, A., Epstein, R., Morales, R., Serón, J., & Traverso, P.
+                </p>
+                <p class="publication-title">
+                  A Truck Scheduling System Improves Efficiency in the Forest Industries
+                </p>
+                <p class="publication-venue">
+                  <strong>Interfaces</strong>, 26(4), 1-12 (1996)
+                </p>
+                <a href="https://doi.org/10.1287/inte.26.4.1" target="_blank" class="publication-link">
+                  Ver publicación →
+                </a>
+              </div>
             </div>
-            <div class="publication-content">
-              <p class="publication-authors">
-                Epstein, R., Neely, A., Weintraub, A., Valenzuela, F., Hurtado, S., González, G., Beiza, A., Naveas, M., Infante, F., Alarcón, F., Angulo, G., Berner, C., Catalán, J., González, C., & Yung, D.
-              </p>
-              <p class="publication-title">
-                A strategic empty container logistics optimization in a major shipping company
-              </p>
-              <p class="publication-venue">
-                <strong>INFORMS Journal on Applied Analytics</strong> (antes Interfaces), 42(1), 5–16 (2012)
-              </p>
-              <a href="https://doi.org/10.1287/inte.1110.0611" target="_blank" class="publication-link">
-                Ver publicación →
-              </a>
+
+            <div class="additional-publications">
+              <h4>Publicaciones adicionales sobre ASICAM</h4>
+
+              <div class="pub-item">
+                <p class="pub-authors">Acuña, M., et al.</p>
+                <p class="pub-title">Improving Forestry Transport Efficiency through Truck Scheduling Systems</p>
+                <p class="pub-venue">Proceedings FORMEC 2011</p>
+                <a href="https://www.formec.org/images/proceedings/2011/formec2011_paper_acuna_etal_b.pdf" target="_blank">
+                  Ver PDF →
+                </a>
+              </div>
+
+              <div class="pub-item">
+                <p class="pub-authors">Cossens, P.</p>
+                <p class="pub-title">Evaluation of ASICAM for Truck Scheduling in New Zealand</p>
+                <p class="pub-venue">LIRO Report V18/7, Logging Industry Research Organisation (1993)</p>
+                <a href="https://fgr.nz/wp-content/uploads/2024/06/web_REP-V18-7-1993.pdf" target="_blank">
+                  Ver PDF →
+                </a>
+              </div>
             </div>
           </div>
 
-          <!-- PLANEX -->
-          <div class="publication-card">
-            <div class="publication-header">
-              <h3>PLANEX - Planificación de Caminos y Cosecha Forestal</h3>
-            </div>
-            <div class="publication-content">
-              <p class="publication-authors">
-                Epstein, R., Weintraub, A., Sapunar, P., Nieto, E., Sessions, B., & Sessions, J.
-              </p>
-              <p class="publication-title">
-                PLANEX: Un sistema para la óptima habilitación de maquinaria de cosecha
-              </p>
-              <p class="publication-venue">
-                <strong>V Taller de Producción Forestal</strong>, Concepción, Chile. Instituto Forestal (INFOR) (1995)
-              </p>
-              <a href="https://bibliotecadigital.infor.cl/handle/20.500.12220/14717" target="_blank" class="publication-link">
-                Ver publicación →
-              </a>
-            </div>
-            <div class="additional-refs">
-              <p class="ref-item">
-                <strong>Sistema de optimización (1998):</strong>
-                <a href="https://bibliotecadigital.infor.cl/handle/20.500.12220/14745" target="_blank">
-                  PLANEX: Sistema para optimizar la distribución de equipos y caminos
+          <!-- CSAV -->
+          <div class="tab-content" id="tab-csav">
+            <div class="publication-card featured">
+              <div class="publication-header">
+                <h3>Optimización Logística de Contenedores - CSAV</h3>
+                <span class="publication-badge finalist">Finalista Franz Edelman</span>
+              </div>
+              <div class="publication-content">
+                <p class="publication-authors">
+                  Epstein, R., Neely, A., Weintraub, A., Valenzuela, F., Hurtado, S., González, G., Beiza, A., Naveas, M., Infante, F., Alarcón, F., Angulo, G., Berner, C., Catalán, J., González, C., & Yung, D.
+                </p>
+                <p class="publication-title">
+                  A strategic empty container logistics optimization in a major shipping company
+                </p>
+                <p class="publication-venue">
+                  <strong>INFORMS Journal on Applied Analytics</strong> (antes Interfaces), 42(1), 5–16 (2012)
+                </p>
+                <a href="https://doi.org/10.1287/inte.1110.0611" target="_blank" class="publication-link">
+                  Ver publicación →
                 </a>
-              </p>
-              <p class="ref-item">
-                <strong>Aplicación real (1996):</strong>
-                <a href="https://bibliotecadigital.infor.cl/handle/20.500.12220/14722" target="_blank">
-                  Aplicación real de software "PLANEX" en planificación de cosecha
-                </a>
-              </p>
+              </div>
             </div>
           </div>
 
-          <!-- CODELCO / Minería -->
-          <div class="publication-card">
-            <div class="publication-header">
-              <h3>Planificación Minera Integrada - Codelco</h3>
+          <!-- Codelco -->
+          <div class="tab-content" id="tab-codelco">
+            <div class="publication-card">
+              <div class="publication-header">
+                <h3>Planificación Minera Integrada - Codelco</h3>
+              </div>
+              <div class="publication-content">
+                <p class="publication-authors">
+                  Epstein, R., Goic, M., Weintraub, A., Catalán, J., Santibáñez, P., Urrutia, R., Cancino, R., Gaete, S., Aguayo, A., & Caro, F.
+                </p>
+                <p class="publication-title">
+                  Optimizing long-term production plans in underground and open-pit copper mines
+                </p>
+                <p class="publication-venue">
+                  <strong>Operations Research</strong>, 60(1), 4–17 (2012)
+                </p>
+                <a href="https://doi.org/10.1287/opre.1110.1003" target="_blank" class="publication-link">
+                  Ver publicación →
+                </a>
+              </div>
             </div>
-            <div class="publication-content">
-              <p class="publication-authors">
-                Epstein, R., Goic, M., Weintraub, A., Catalán, J., Santibáñez, P., Urrutia, R., Cancino, R., Gaete, S., Aguayo, A., & Caro, F.
-              </p>
-              <p class="publication-title">
-                Optimizing long-term production plans in underground and open-pit copper mines
-              </p>
-              <p class="publication-venue">
-                <strong>Operations Research</strong>, 60(1), 4–17 (2012)
-              </p>
-              <a href="https://doi.org/10.1287/opre.1110.1003" target="_blank" class="publication-link">
-                Ver publicación →
-              </a>
-            </div>
-            <div class="additional-refs">
-              <p class="ref-item">
-                <strong>Enfoque integrado (2007):</strong>
+
+            <div class="additional-publications">
+              <h4>Publicaciones relacionadas</h4>
+
+              <div class="pub-item">
+                <p class="pub-authors">Caro, R., Epstein, R., Santibáñez, P., & Weintraub, A.</p>
+                <p class="pub-title">An integrated approach to the long-term planning process in the copper mining industry</p>
+                <p class="pub-venue">Handbook of Operations Research in Natural Resources, Springer (2007)</p>
                 <a href="https://doi.org/10.1007/978-0-387-71815-6_32" target="_blank">
-                  An integrated approach to the long-term planning process in the copper mining industry
+                  Ver publicación →
                 </a>
-                - Handbook of Operations Research in Natural Resources, Springer
-              </p>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -568,6 +597,31 @@
         if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
           closeMenu();
         }
+      });
+    });
+
+    // Sistema de pestañas para publicaciones académicas
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetTab = btn.getAttribute('data-tab');
+
+          // Remover active de todos los botones y contenidos
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+
+          // Activar el botón clickeado
+          btn.classList.add('active');
+
+          // Activar el contenido correspondiente
+          const targetContent = document.getElementById(`tab-${targetTab}`);
+          if (targetContent) {
+            targetContent.classList.add('active');
+          }
+        });
       });
     });
   </script>
