@@ -2209,29 +2209,17 @@ footer {
   }
 }
 
-/* ===== CARRUSEL DE CASOS DE ÉXITO ===== */
-.success-carousel-container {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.success-carousel-wrapper {
-  overflow: hidden;
-  position: relative;
-}
-
-.success-carousel-track {
-  display: flex;
+/* ===== GRID DE CASOS DE ÉXITO ===== */
+.success-cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
-  transition: transform 0.5s ease;
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 20px 0;
 }
 
 .success-case-card {
-  flex: 0 0 350px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -2243,8 +2231,8 @@ footer {
 }
 
 .success-case-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
 .success-case-card .case-icon {
@@ -2299,139 +2287,41 @@ footer {
   line-height: 1.4;
 }
 
-/* Navegación del carrusel de casos de éxito */
-.success-carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  z-index: 10;
-}
 
-.success-carousel-btn {
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  pointer-events: all;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(11, 94, 215, 0.3);
-  z-index: 20;
-}
-
-.success-carousel-btn svg {
-  width: 24px;
-  height: 24px;
-  stroke-width: 2.5;
-}
-
-.success-carousel-btn:hover {
-  background: var(--primary-color-dark);
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(11, 94, 215, 0.4);
-}
-
-.success-carousel-btn:active {
-  transform: scale(0.95);
-}
-
-.success-carousel-btn.prev {
-  margin-left: -25px;
-}
-
-.success-carousel-btn.next {
-  margin-right: -25px;
-}
-
-/* Indicadores del carrusel de casos de éxito */
-.success-carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 30px;
-  padding: 10px;
-}
-
-.success-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #d0d0d0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-}
-
-.success-dot.active {
-  background: var(--primary-color);
-  transform: scale(1.3);
-  border-color: var(--primary-color);
-  box-shadow: 0 2px 8px rgba(11, 94, 215, 0.4);
-}
-
-.success-dot:hover {
-  background: var(--primary-color-dark);
-  transform: scale(1.15);
-  border-color: var(--primary-color-dark);
-}
-
-/* Responsive para el carrusel de casos de éxito */
+/* Responsive para grid de casos de éxito */
 @media (max-width: 768px) {
+  .success-cases-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 15px 0;
+  }
+
   .success-case-card {
-    flex: 0 0 280px;
-    padding: 20px;
+    padding: 25px;
     min-height: 400px;
   }
-  
+
   .success-case-card h3 {
     font-size: 1.1rem;
   }
-  
+
   .success-case-card > p {
     font-size: 0.9rem;
   }
-  
+
   .success-case-card .case-details p {
     font-size: 0.85rem;
   }
-  
-  .success-carousel-btn {
-    width: 44px;
-    height: 44px;
-    font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  .success-case-card {
+    padding: 20px;
   }
 
-  .success-carousel-btn svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  .success-carousel-btn.prev {
-    margin-left: -22px;
-  }
-
-  .success-carousel-btn.next {
-    margin-right: -22px;
-  }
-
-  .success-dot {
-    width: 12px;
-    height: 12px;
-  }
-  
-  .success-carousel-track {
-    gap: 20px;
+  .success-case-card .case-icon img {
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -2957,7 +2847,7 @@ img {
   background: linear-gradient(135deg, var(--primary-color), var(--primary-color-dark));
   color: white;
   text-align: center;
-  padding: 80px 20px;
+  padding: 50px 20px;
 }
 
 .cta-section h2 {

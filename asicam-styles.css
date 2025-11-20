@@ -440,7 +440,7 @@ body {
    ==================================== */
 
 .awards-section {
-  padding: var(--space-2xl) var(--space-md);
+  padding: var(--space-2xl) var(--space-md) var(--space-lg);
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
 }
 
@@ -549,7 +549,7 @@ body {
   .benefits-demo {
     position: relative;
     top: 0;
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
   }
 
@@ -819,16 +819,16 @@ body {
 }
 
 .benefits-layout {
-  display: grid;
-  grid-template-columns: 400px 1fr;
+  display: flex;
+  flex-direction: column;
   gap: var(--space-2xl);
-  align-items: start;
-  margin-bottom: var(--space-2xl);
+  max-width: 900px;
+  margin: 0 auto var(--space-2xl);
 }
 
 .benefits-demo {
-  position: sticky;
-  top: 100px;
+  width: 100%;
+  text-align: center;
 }
 
 .benefits-gif {
