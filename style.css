@@ -1711,6 +1711,22 @@ h3 {
   flex-wrap: wrap;
 }
 
+.site-footer__logo {
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+  transition: opacity var(--transition-base);
+}
+
+.site-footer__logo:hover {
+  opacity: 1;
+}
+
+.site-footer__logo img {
+  height: 24px;
+  width: auto;
+}
+
 .site-footer__text {
   margin: 0;
   line-height: 1.6;
