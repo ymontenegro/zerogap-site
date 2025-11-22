@@ -1,50 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acerca de Zerogap</title>
+  <title>Acerca de Zerogap | 30+ Años en Optimización e Investigación Operativa</title>
   <!-- Fuentes y estilos -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="animations.css">
-  <meta name="description" content="Conoce al equipo y la misión de Zerogap, especialistas en operaciones e investigación operativa aplicadas a la logística.">
+  <link rel="stylesheet" href="contact-about-styles.css">
+  <meta name="description"
+    content="Zerogap by Optyges: 30+ años de experiencia en investigación operativa y optimización logística. Equipo experto en machine learning, IoT y modelamiento matemático para industria minera, forestal y logística. Premios Franz Edelman y Avonni.">
+
+  <!-- JSON-LD: AboutPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Acerca de Zerogap",
+    "description": "Información sobre Zerogap by Optyges, empresa chilena especializada en optimización logística e investigación operativa con más de 30 años de experiencia.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Zerogap",
+      "alternateName": "Zerogap by Optyges",
+      "foundingDate": "1990",
+      "description": "Empresa chilena dedicada a resolver problemas de ingeniería avanzada aplicados a la logística en diversos sectores industriales.",
+      "knowsAbout": [
+        "Investigación de Operaciones",
+        "Optimización Logística",
+        "Machine Learning",
+        "IoT Industrial",
+        "Modelamiento Matemático"
+      ],
+      "award": [
+        "Franz Edelman Award",
+        "South African Logistics Achiever Award",
+        "Avonni Innovador del Año"
+      ]
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://zerogap.cl"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Acerca de",
+        "item": "https://zerogap.cl/about.html"
+      }
+    ]
+  }
+  </script>
 </head>
+
 <body>
   <!-- Scroll progress indicator -->
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- Navegación común -->
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="logo"><img src="images/logo.png" alt="Logotipo Zerogap"></a>
-
-      <!-- Botón hamburguesa para móvil -->
-      <div class="menu-toggle" id="menuToggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <nav id="navMenu">
-        <a href="what-we-do.html">Qué hacemos</a>
-        <a href="success-cases.html">Casos de éxito</a>
-        <a href="asicam.html">ASICAM</a>
-        <a href="about.html" class="active">Acerca de</a>
-        <a href="contact.html">Contacto</a>
-      </nav>
-    </div>
-
-    <!-- Overlay para cerrar menú en móvil -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-  </header>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
 
   <main>
     <!-- Hero de página interna con imagen -->
-    <section id="page-hero">
-      <div class="hero-content">
-        <h1>Acerca de Zerogap</h1>
-        <p class="hero-subtitle">
+    <section class="hero hero--page">
+      <div class="hero__content">
+        <h1 class="hero__title">Acerca de Zerogap</h1>
+        <p class="hero__subtitle">
           Más de 30 años de experiencia transformando la industria a través de la ingeniería avanzada
         </p>
       </div>
@@ -53,7 +89,9 @@
     <!-- Imagen industrial destacada -->
     <section class="about-image-section">
       <div class="container">
-        <img src="images/industrial-process.jpg" alt="Proceso industrial moderno" class="about-main-image">
+        <img src="images/industrial-process.jpg"
+          alt="Proceso industrial moderno con optimización logística y tecnología avanzada" class="about-main-image"
+          loading="lazy">
       </div>
     </section>
 
@@ -61,128 +99,48 @@
       <div class="container">
         <h2>Quiénes somos</h2>
         <p>
-          Zerogap by Optyges es una empresa chilena dedicada a resolver problemas de ingeniería avanzada aplicados a la logística en diversos sectores industriales. Nuestro equipo está compuesto por ingenieros expertos en investigación de operaciones y optimización, con experiencia en la aplicación de modelos matemáticos, herramientas de simulación y algoritmos de <em>machine learning</em> al mundo real.
+          Zerogap by Optyges es una empresa chilena dedicada a resolver problemas de ingeniería avanzada aplicados a la
+          logística en diversos sectores industriales. Nuestro equipo está compuesto por ingenieros expertos en
+          investigación de operaciones y optimización, con experiencia en la aplicación de modelos matemáticos,
+          herramientas de simulación y algoritmos de <em>machine learning</em> al mundo real.
         </p>
         <p>
-          Hemos trabajado junto a grandes corporaciones mineras y forestales, así como con pequeñas y medianas empresas que buscan mejorar su competitividad. Nuestros clientes confían en nuestra capacidad para diseñar soluciones a medida que incrementan la eficiencia, reducen costos y disminuyen impactos ambientales.
+          Hemos trabajado junto a grandes corporaciones mineras y forestales, así como con pequeñas y medianas empresas
+          que buscan mejorar su competitividad. Nuestros clientes confían en nuestra capacidad para diseñar soluciones a
+          medida que incrementan la eficiencia, reducen costos y disminuyen impactos ambientales.
         </p>
         <p>
-          Nuestro enfoque se basa en combinar experiencia técnica con un profundo conocimiento de las operaciones industriales. Adaptamos herramientas de optimización de nivel mundial a la realidad de cada cliente, asegurando una implementación exitosa y resultados tangibles en el corto y largo plazo.
+          Nuestro enfoque se basa en combinar experiencia técnica con un profundo conocimiento de las operaciones
+          industriales. Adaptamos herramientas de optimización de nivel mundial a la realidad de cada cliente,
+          asegurando una implementación exitosa y resultados tangibles en el corto y largo plazo.
         </p>
       </div>
     </section>
 
     <!-- CTA reutilizada -->
-    <section id="cta">
-      <div class="cta-container">
+    <section id="cta" class="cta">
+      <div class="cta__container">
         <h2>¿Listo para transformar tu cadena de suministro?</h2>
         <p>
-          Ponte en contacto con nosotros para explorar cómo nuestras soluciones pueden impulsar la eficiencia y la sostenibilidad de tu negocio.
+          Ponte en contacto con nosotros para explorar cómo nuestras soluciones pueden impulsar la eficiencia y la
+          sostenibilidad de tu negocio.
         </p>
-        <a href="contact.html" class="btn">Contáctanos</a>
+        <a href="contact.html" class="btn btn-primary"><span>Contáctanos</span></a>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-container">
-      <p>&copy; 2025 Zerogap. Todos los derechos reservados.</p>
-      <p>Napoleón 3037, 71, Las Condes, Chile</p>
-      <p>Josue Smith Solar 426, Providencia, Chile</p>
-      <p><a href="https://wa.me/56939100549" target="_blank">WhatsApp</a> | <a href="mailto:contacto@zerogap.cl">contacto@zerogap.cl</a></p>
-    </div>
-  </footer>
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
 
-  <!-- JavaScript optimizado para móviles -->
-  <script>
-    // Header scroll effect
-    const header = document.querySelector('header');
-    const scrollProgress = document.getElementById('scrollProgress');
-    let lastScroll = 0;
+  <!-- Component Loader -->
+  <script src="js/components.js"></script>
 
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
 
-      // Header glassmorphism effect
-      if (currentScroll > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
 
-      // Scroll progress indicator
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (currentScroll / scrollHeight) * 100;
-      scrollProgress.style.width = scrolled + '%';
 
-      lastScroll = currentScroll;
-    });
 
-    // Intersection Observer for reveal animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    // Observe sections
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('section');
-      sections.forEach((section) => {
-        observer.observe(section);
-      });
-    });
-
-    // Menú hamburguesa móvil
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.getElementById('menuToggle');
-      const navMenu = document.getElementById('navMenu');
-      const menuOverlay = document.getElementById('menuOverlay');
-      const body = document.body;
-
-      function toggleMenu() {
-        menuToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        menuOverlay.classList.toggle('active');
-        body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-      }
-
-      function closeMenu() {
-        menuToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-        menuOverlay.classList.remove('active');
-        body.style.overflow = '';
-      }
-
-      if (menuToggle) {
-        menuToggle.addEventListener('click', toggleMenu);
-      }
-
-      if (menuOverlay) {
-        menuOverlay.addEventListener('click', closeMenu);
-      }
-
-      // Cerrar menú al hacer click en un enlace
-      const navLinks = navMenu.querySelectorAll('a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
-      });
-
-      // Cerrar menú con tecla ESC
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-          closeMenu();
-        }
-      });
-    });
-  </script>
 </body>
+
 </html>

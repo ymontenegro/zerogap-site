@@ -1,23 +1,23 @@
-<header>
-  <div class="nav-container">
-    <a href="index.html" class="logo"><img src="images/logo.png" alt="Logotipo Zerogap"></a>
+<header class="site-header">
+  <div class="site-header__container">
+    <a href="index.html" class="site-header__logo"><img src="images/logo.png" alt="Logotipo Zerogap"></a>
 
     <!-- Botón hamburguesa para móvil -->
-    <div class="menu-toggle" id="menuToggle">
+    <button class="site-header__toggle" id="menuToggle" aria-label="Abrir menú">
       <span></span>
       <span></span>
       <span></span>
-    </div>
+    </button>
 
-    <nav id="navMenu">
-      <a href="what-we-do.html">Qué hacemos</a>
-      <a href="success-cases.html">Casos de éxito</a>
-      <a href="asicam.html">ASICAM</a>
-      <a href="about.html">Acerca de</a>
-      <a href="contact.html">Contacto</a>
+    <nav class="main-nav" id="navMenu">
+      <a href="what-we-do.html" class="main-nav__link">Qué hacemos</a>
+      <a href="success-cases.html" class="main-nav__link">Casos de éxito</a>
+      <a href="asicam.html" class="main-nav__link">ASICAM</a>
+      <a href="about.html" class="main-nav__link">Acerca de</a>
+      <a href="contact.html" class="main-nav__link">Contacto</a>
     </nav>
   </div>
 
   <!-- Overlay para cerrar menú en móvil -->
-  <div class="menu-overlay" id="menuOverlay"></div>
+  <div class="site-header__overlay" id="menuOverlay"></div>
 </header>

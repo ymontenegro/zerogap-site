@@ -1,273 +1,352 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>ASICAM - Sistema de Asignación de Camiones | Zerogap</title>
+  <title>ASICAM - Sistema de Asignación de Camiones y Optimización Logística | Zerogap</title>
   <!-- Fuentes y estilos -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="asicam-styles.css">
   <link rel="stylesheet" href="animations.css">
-  <meta name="description" content="ASICAM - Dominio Total de su Cadena Logística. Plataforma de orquestación inteligente para Primera Milla industrial y distribución de Última Milla.">
+  <meta name="description"
+    content="ASICAM: Sistema de optimización logística para Primera y Última Milla. Reduce costos de transporte hasta 20% con IA y algoritmos avanzados. Solución probada en minería, forestal y distribución industrial.">
+
+  <!-- JSON-LD: SoftwareApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ASICAM",
+    "applicationCategory": "BusinessApplication",
+    "applicationSubCategory": "Supply Chain Management",
+    "operatingSystem": "Web-based",
+    "description": "Sistema de optimización logística que orquesta Primera Milla industrial y distribución de Última Milla mediante algoritmos de decisión adaptativa e inteligencia artificial.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Consulta para cotización personalizada"
+    },
+    "featureList": [
+      "Ruteo Inteligente Multi-Parada",
+      "Optimización de Primera Milla Industrial",
+      "Distribución de Última Milla",
+      "Ventanas Horarias",
+      "Logística Inversa",
+      "Visibilidad en Tiempo Real",
+      "Consolidación de Cargas",
+      "Planificación Dinámica"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Zerogap",
+      "url": "https://zerogap.cl"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "15",
+      "bestRating": "5"
+    },
+    "award": "Franz Edelman Award"
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://zerogap.cl"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "ASICAM",
+        "item": "https://zerogap.cl/asicam.html"
+      }
+    ]
+  }
+  </script>
 </head>
+
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- Navegación común -->
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="logo"><img src="images/logo.png" alt="Logotipo Zerogap"></a>
-
-      <!-- Botón hamburguesa para móvil -->
-      <div class="menu-toggle" id="menuToggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <nav id="navMenu">
-        <a href="what-we-do.html">Qué hacemos</a>
-        <a href="success-cases.html">Casos de éxito</a>
-        <a href="asicam.html" class="active">ASICAM</a>
-        <a href="about.html">Acerca de</a>
-        <a href="contact.html">Contacto</a>
-      </nav>
-    </div>
-
-    <!-- Overlay para cerrar menú en móvil -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-  </header>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
 
   <main>
     <!-- Hero Section - La Promesa -->
-    <section id="page-hero" class="asicam-hero">
-      <div class="hero-content">
-        <h1 class="hero-title">Dominio Total de su Cadena Logística</h1>
-        <p class="hero-subtitle">
+    <section class="hero hero--asicam">
+      <div class="hero__content">
+        <h1 class="hero__title">ASICAM: Dominio Total de su Cadena Logística</h1>
+        <p class="hero__subtitle">
           Hacia la planta y el cliente final
         </p>
-        <p class="hero-description">
-          Una única plataforma de orquestación inteligente para la Primera Milla industrial y la distribución capilar de Última Milla. Optimice cargas masivas y rutas de múltiples paradas con algoritmos de decisión adaptativa.
+        <p class="hero__description">
+          Una única plataforma de orquestación inteligente para la Primera Milla industrial y la distribución capilar de
+          Última Milla. Optimice cargas masivas y rutas de múltiples paradas con algoritmos de decisión adaptativa.
         </p>
       </div>
     </section>
 
     <!-- Soluciones por Etapa con Imagen -->
-    <section class="solutions-showcase">
-      <div class="showcase-split">
+    <section class="showcase">
+      <div class="showcase__container">
         <!-- Lado Izquierdo: Imagen -->
-        <div class="showcase-image">
-          <img src="images/asicam3.jpg" alt="Logística Industrial - Primera Milla">
+        <div class="showcase__image-wrapper">
+          <img src="images/asicam3.jpg"
+            alt="Sistema ASICAM optimizando logística industrial de primera milla en planta forestal" loading="lazy"
+            class="showcase__image">
         </div>
 
         <!-- Lado Derecho: Contenido -->
-        <div class="showcase-content">
-          <h2 class="showcase-title">Logística Industrial</h2>
-          <p class="showcase-subtitle">Primera Milla</p>
+        <div class="showcase__content">
+          <header class="showcase__header">
+            <h2 class="showcase__title">Logística Industrial</h2>
+            <p class="showcase__subtitle">Primera Milla</p>
+          </header>
 
-          <div class="showcase-features">
-            <div class="feature-item">
-              <div class="feature-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <ul class="feature-list">
+            <li class="feature-list__item">
+              <div class="feature-list__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  aria-hidden="true">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
-              <div class="feature-text">
-                <h4>Enfoque</h4>
-                <p>Abastecimiento a plantas, movimiento de materias primas y transporte inter-plantas</p>
+              <div class="feature-list__content">
+                <h3 class="feature-list__title">Enfoque</h3>
+                <p class="feature-list__text">Abastecimiento a plantas, movimiento de materias primas y transporte
+                  inter-plantas</p>
               </div>
-            </div>
+            </li>
 
-            <div class="feature-item">
-              <div class="feature-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <li class="feature-list__item">
+              <div class="feature-list__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  aria-hidden="true">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
-              <div class="feature-text">
-                <h4>Capacidad</h4>
-                <p>Gestión de altos volúmenes, programación de materias primas y productos terminados</p>
+              <div class="feature-list__content">
+                <h3 class="feature-list__title">Capacidad</h3>
+                <p class="feature-list__text">Gestión de altos volúmenes, programación de materias primas y productos
+                  terminados</p>
               </div>
-            </div>
+            </li>
 
-            <div class="feature-item">
-              <div class="feature-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <li class="feature-list__item">
+              <div class="feature-list__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  aria-hidden="true">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
-              <div class="feature-text">
-                <h4>Clave del Éxito</h4>
-                <p>Sincronización con la producción y minimización de tiempos en planta</p>
+              <div class="feature-list__content">
+                <h3 class="feature-list__title">Clave del Éxito</h3>
+                <p class="feature-list__text">Sincronización con la producción y minimización de tiempos en planta</p>
               </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- Última Milla con Imagen Invertida -->
-    <section class="solutions-showcase alt">
-      <div class="showcase-split">
+    <section class="showcase showcase--alt">
+      <div class="showcase__container showcase__container--reverse">
         <!-- Lado Izquierdo: Contenido -->
-        <div class="showcase-content">
-          <h2 class="showcase-title">Distribución y Entrega</h2>
-          <p class="showcase-subtitle">Última Milla</p>
+        <div class="showcase__content">
+          <header class="showcase__header">
+            <h2 class="showcase__title">Distribución y Entrega</h2>
+            <p class="showcase__subtitle">Última Milla</p>
+          </header>
 
-          <div class="showcase-features">
-            <div class="feature-item">
-              <div class="feature-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <ul class="feature-list">
+            <li class="feature-list__item">
+              <div class="feature-list__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  aria-hidden="true">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
-              <div class="feature-text">
-                <h4>Enfoque</h4>
-                <p>Entrega a clientes finales, retail o centros de distribución</p>
+              <div class="feature-list__content">
+                <h3 class="feature-list__title">Enfoque</h3>
+                <p class="feature-list__text">Entrega a clientes finales, retail o centros de distribución</p>
               </div>
-            </div>
+            </li>
 
-            <div class="feature-item">
-              <div class="feature-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <li class="feature-list__item">
+              <div class="feature-list__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  aria-hidden="true">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
-              <div class="feature-text">
-                <h4>Capacidad</h4>
-                <p>Planificación de viajes con múltiples pedidos y descargas en múltiples destinos (Multi-drop)</p>
+              <div class="feature-list__content">
+                <h3 class="feature-list__title">Capacidad</h3>
+                <p class="feature-list__text">Planificación de viajes con múltiples pedidos y descargas en múltiples
+                  destinos (Multi-drop)</p>
               </div>
-            </div>
+            </li>
 
-            <div class="feature-item">
-              <div class="feature-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <li class="feature-list__item">
+              <div class="feature-list__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  aria-hidden="true">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
-              <div class="feature-text">
-                <h4>Clave del Éxito</h4>
-                <p>Cumplimiento estricto de ventanas horarias y satisfacción del cliente</p>
+              <div class="feature-list__content">
+                <h3 class="feature-list__title">Clave del Éxito</h3>
+                <p class="feature-list__text">Cumplimiento estricto de ventanas horarias y satisfacción del cliente</p>
               </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
 
         <!-- Lado Derecho: Imagen -->
-        <div class="showcase-image">
-          <img src="images/asicam1.jpg" alt="Distribución y Entrega - Última Milla">
+        <div class="showcase__image-wrapper">
+          <img src="images/asicam1.jpg"
+            alt="Distribución de última milla con sistema ASICAM para entregas multi-destino" loading="lazy"
+            class="showcase__image">
         </div>
       </div>
     </section>
 
     <!-- Módulo Última Milla con Imagen de Fondo -->
-    <section class="last-mile-hero">
-      <div class="last-mile-overlay"></div>
-      <div class="container">
-        <div class="last-mile-content">
-          <h2>Distribución Capilar y Última Milla sin Fricción</h2>
-          <p class="intro-text">
+    <section class="hero-banner hero-banner--last-mile">
+      <div class="hero-banner__overlay"></div>
+      <div class="hero-banner__container">
+        <header class="hero-banner__header">
+          <h2 class="hero-banner__title">Distribución Capilar y Última Milla sin Fricción</h2>
+          <p class="hero-banner__intro">
             Lleve la potencia de la optimización industrial a la puerta de sus clientes.
           </p>
+        </header>
 
-          <div class="lm-features-grid">
-            <div class="lm-card">
-              <div class="lm-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                </svg>
-              </div>
-              <h3>Ruteo Inteligente Multi-Parada</h3>
-              <p>Optimiza rutas donde un solo viaje abastece múltiples destinos</p>
+        <div class="hero-banner__grid">
+          <article class="info-card info-card--glass">
+            <div class="info-card__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
             </div>
+            <h3 class="info-card__title">Ruteo Inteligente Multi-Parada</h3>
+            <p class="info-card__text">Optimiza rutas donde un solo viaje abastece múltiples destinos</p>
+          </article>
 
-            <div class="lm-card">
-              <div class="lm-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-              </div>
-              <h3>Ventanas Horarias</h3>
-              <p>Cumplimiento estricto de horarios y restricciones de tiempo</p>
+          <article class="info-card info-card--glass">
+            <div class="info-card__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
             </div>
+            <h3 class="info-card__title">Ventanas Horarias</h3>
+            <p class="info-card__text">Cumplimiento estricto de horarios y restricciones de tiempo</p>
+          </article>
 
-            <div class="lm-card">
-              <div class="lm-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="9 11 12 14 22 4"></polyline>
-                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                </svg>
-              </div>
-              <h3>Logística Inversa</h3>
-              <p>Gestión de devoluciones y recolección en viaje de retorno</p>
+          <article class="info-card info-card--glass">
+            <div class="info-card__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <polyline points="9 11 12 14 22 4"></polyline>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+              </svg>
             </div>
+            <h3 class="info-card__title">Logística Inversa</h3>
+            <p class="info-card__text">Gestión de devoluciones y recolección en viaje de retorno</p>
+          </article>
 
-            <div class="lm-card">
-              <div class="lm-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                  <circle cx="12" cy="12" r="3"></circle>
-                </svg>
-              </div>
-              <h3>Visibilidad en Tiempo Real</h3>
-              <p>Monitoreo continuo y anticipación de llegadas (ETA)</p>
+          <article class="info-card info-card--glass">
+            <div class="info-card__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
             </div>
+            <h3 class="info-card__title">Visibilidad en Tiempo Real</h3>
+            <p class="info-card__text">Monitoreo continuo y anticipación de llegadas (ETA)</p>
+          </article>
 
-            <div class="lm-card">
-              <div class="lm-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                </svg>
-              </div>
-              <h3>Consolidación de Cargas</h3>
-              <p>Agrupa envíos pequeños para maximizar eficiencia y reducir costos de transporte</p>
+          <article class="info-card info-card--glass">
+            <div class="info-card__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                </path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
             </div>
+            <h3 class="info-card__title">Consolidación de Cargas</h3>
+            <p class="info-card__text">Agrupa envíos pequeños para maximizar eficiencia y reducir costos de transporte
+            </p>
+          </article>
 
-            <div class="lm-card">
-              <div class="lm-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M12 6v6l4 2"></path>
-                  <path d="M16.24 7.76l-2.12 2.12"></path>
-                </svg>
-              </div>
-              <h3>Planificación Dinámica</h3>
-              <p>Ajuste automático de rutas ante cambios de último momento o nuevos pedidos urgentes</p>
+          <article class="info-card info-card--glass">
+            <div class="info-card__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"></path>
+                <path d="M16.24 7.76l-2.12 2.12"></path>
+              </svg>
             </div>
-          </div>
+            <h3 class="info-card__title">Planificación Dinámica</h3>
+            <p class="info-card__text">Ajuste automático de rutas ante cambios de último momento o nuevos pedidos
+              urgentes</p>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- Tecnología Transversal con Fondo -->
-    <section class="tech-platform">
-      <div class="tech-overlay"></div>
-      <div class="container">
-        <div class="tech-header">
-          <h2>El "Cerebro" del Sistema</h2>
-          <p>Motor de optimización eficiente y de alta complejidad que permite resolver problemas con múltiples restricciones.</p>
-        </div>
+    <section class="tech-section">
+      <div class="tech-section__overlay"></div>
+      <div class="tech-section__container">
+        <header class="tech-section__header">
+          <h2 class="tech-section__title">El "Cerebro" del Sistema</h2>
+          <p class="tech-section__description">Motor de optimización eficiente y de alta complejidad que permite
+            resolver problemas con múltiples restricciones.</p>
+        </header>
 
-        <div class="tech-cards-grid">
-          <div class="tech-feature-card">
-            <div class="tech-feature-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <div class="tech-section__grid">
+          <article class="tech-card">
+            <div class="tech-card__icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
                 <path d="M12 2a10 10 0 1 0 10 10H12V2z"></path>
                 <path d="M12 12L2.1 10.5"></path>
                 <path d="M12 12V22"></path>
               </svg>
             </div>
-            <h3>Optimización de Alta Complejidad</h3>
-            <p>Algoritmos matemáticos avanzados diseñados para encontrar la solución más eficiente en escenarios con miles de variables.</p>
-          </div>
+            <h3 class="tech-card__title">Optimización de Alta Complejidad</h3>
+            <p class="tech-card__text">Algoritmos matemáticos avanzados diseñados para encontrar la solución más
+              eficiente en escenarios con miles de variables.</p>
+          </article>
 
-          <div class="tech-feature-card">
-            <div class="tech-feature-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <article class="tech-card">
+            <div class="tech-card__icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
                 <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -275,64 +354,77 @@
                 <polyline points="10 9 9 9 8 9"></polyline>
               </svg>
             </div>
-            <h3>Múltiples Restricciones</h3>
-            <p>Resuelve simultáneamente limitaciones de horarios, capacidades, tipos de vehículo y compatibilidad de carga sin sacrificar rendimiento.</p>
-          </div>
+            <h3 class="tech-card__title">Múltiples Restricciones</h3>
+            <p class="tech-card__text">Resuelve simultáneamente limitaciones de horarios, capacidades, tipos de vehículo
+              y compatibilidad de carga sin sacrificar rendimiento.</p>
+          </article>
 
-          <div class="tech-feature-card">
-            <div class="tech-feature-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <article class="tech-card">
+            <div class="tech-card__icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
                 <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                </path>
               </svg>
             </div>
-            <h3>Flexibilidad y Adaptabilidad</h3>
-            <p>Configuración a medida para modelar las reglas de negocio específicas y únicas de su operación.</p>
-          </div>
+            <h3 class="tech-card__title">Flexibilidad y Adaptabilidad</h3>
+            <p class="tech-card__text">Configuración a medida para modelar las reglas de negocio específicas y únicas de
+              su operación.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- Beneficios de la Integración -->
-    <section class="integration-benefits">
-      <div class="container">
-        <div class="benefits-content">
-          <h2 class="benefits-title">Una Plataforma Integral que Transforma su Operación Logística</h2>
+    <section class="benefits">
+      <div class="benefits__container">
+        <div class="benefits__content">
+          <h2 class="benefits__title">Una Plataforma Integral que Transforma su Operación Logística</h2>
 
-          <div class="benefits-layout">
+          <div class="benefits__layout">
             <!-- GIF Demostrativo -->
-            <div class="benefits-demo">
-              <img src="images/gif_asicam.gif" alt="Demostración ASICAM" class="benefits-gif">
+            <div class="benefits__demo">
+              <img src="images/gif_asicam.gif"
+                alt="Demostración del sistema ASICAM optimizando rutas de transporte en tiempo real" loading="lazy"
+                class="benefits__gif">
             </div>
 
             <!-- Contenido de texto -->
-            <div class="benefits-narrative">
-              <p class="lead-paragraph">
-                ASICAM unifica toda su cadena logística bajo una única plataforma inteligente. <strong>Desde que el producto sale de la fábrica hasta que llega a manos del cliente final</strong>, cada movimiento y optimización están conectados en tiempo real.
+            <div class="benefits__text-group">
+              <p class="benefits__paragraph benefits__paragraph--lead">
+                ASICAM unifica toda su cadena logística bajo una única plataforma inteligente. <strong>Desde que el
+                  producto sale de la fábrica hasta que llega a manos del cliente final</strong>, cada movimiento y
+                optimización están conectados en tiempo real.
               </p>
 
-              <p class="main-paragraph">
-                <strong>Visibilidad completa y control total</strong> sobre todos sus viajes. Su flota trabaja de manera más inteligente, aprovechando viajes de retorno para recolecciones o distribución adicional, maximizando el uso de cada recurso.
+              <p class="benefits__paragraph">
+                <strong>Visibilidad completa y control total</strong> sobre todos sus viajes. Su flota trabaja de manera
+                más inteligente, aprovechando viajes de retorno para recolecciones o distribución adicional, maximizando
+                el uso de cada recurso.
               </p>
 
-              <p class="main-paragraph">
-                La consolidación genera ahorros inmediatos y medibles. <strong>Minimice kilómetros vacíos</strong>, optimice el llenado de camiones y reduzca significativamente sus costos operativos. Empresas que han implementado ASICAM reportan <strong>ahorros de hasta un 20% en costos de transporte</strong>.
+              <p class="benefits__paragraph">
+                La consolidación genera ahorros inmediatos y medibles. <strong>Minimice kilómetros vacíos</strong>,
+                optimice el llenado de camiones y reduzca significativamente sus costos operativos. Empresas que han
+                implementado ASICAM reportan <strong>ahorros de hasta un 20% en costos de transporte</strong>.
               </p>
             </div>
           </div>
 
-          <div class="benefits-stats">
+          <div class="benefits__stats">
             <div class="stat-box">
-              <div class="stat-value">20%</div>
-              <div class="stat-label">Reducción de costos de transporte</div>
+              <div class="stat-box__value">20%</div>
+              <div class="stat-box__label">Reducción de costos de transporte</div>
             </div>
             <div class="stat-box">
-              <div class="stat-value">30+</div>
-              <div class="stat-label">Años de experiencia comprobada</div>
+              <div class="stat-box__value">30+</div>
+              <div class="stat-box__label">Años de experiencia comprobada</div>
             </div>
             <div class="stat-box">
-              <div class="stat-value">100%</div>
-              <div class="stat-label">Visibilidad de la cadena</div>
+              <div class="stat-box__value">100%</div>
+              <div class="stat-box__label">Visibilidad de la cadena</div>
             </div>
           </div>
         </div>
@@ -341,143 +433,56 @@
 
 
     <!-- Premios y Distinciones -->
-    <section class="awards-section">
-      <div class="container">
-        <h2 class="section-title">Nuestra Experiencia</h2>
-        <p class="section-subtitle">Premios y Distinciones</p>
+    <section class="awards">
+      <div class="awards__container">
+        <header class="awards__header">
+          <h2 class="awards__title">Nuestra Experiencia</h2>
+          <p class="awards__subtitle">Premios y Distinciones</p>
+        </header>
 
-        <div class="awards-grid">
-          <div class="award-card">
-            <div class="award-logo">
-              <img src="images/franz-edelman-award.png" alt="The Franz Edelman Awards">
+        <div class="awards__grid">
+          <article class="award-card">
+            <div class="award-card__logo-wrapper">
+              <img src="images/franz-edelman-award.png" alt="The Franz Edelman Awards" class="award-card__logo">
             </div>
-            <h3>The Franz Edelman Awards</h3>
-            <p>Reconocimiento internacional en investigación de operaciones</p>
-          </div>
+            <h3 class="award-card__title">The Franz Edelman Awards</h3>
+            <p class="award-card__text">Reconocimiento internacional en investigación de operaciones</p>
+          </article>
 
-          <div class="award-card">
-            <div class="award-logo">
-              <img src="images/laa-award.png" alt="Logistics Achiever Awards">
+          <article class="award-card">
+            <div class="award-card__logo-wrapper">
+              <img src="images/laa-award.png" alt="Logistics Achiever Awards" class="award-card__logo">
             </div>
-            <h3>South African Logistics Achiever Award</h3>
-            <p>Premio a la excelencia en logística sudafricana</p>
-          </div>
+            <h3 class="award-card__title">South African Logistics Achiever Award</h3>
+            <p class="award-card__text">Premio a la excelencia en logística sudafricana</p>
+          </article>
 
-          <div class="award-card">
-            <div class="award-logo">
-              <img src="images/avonni-award.png" alt="Avonni">
+          <article class="award-card">
+            <div class="award-card__logo-wrapper">
+              <img src="images/avonni-award.png" alt="Avonni" class="award-card__logo">
             </div>
-            <h3>Avonni Innovador del Año</h3>
-            <p>Reconocimiento a la innovación tecnológica en Chile</p>
-          </div>
+            <h3 class="award-card__title">Avonni Innovador del Año</h3>
+            <p class="award-card__text">Reconocimiento a la innovación tecnológica en Chile</p>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- Call to action -->
     <section class="cta-section">
-      <div class="container">
-        <h2>¿Interesado en ASICAM?</h2>
-        <p>Descubre cómo ASICAM puede transformar las operaciones logísticas de tu empresa</p>
-        <a href="contact.html" class="cta-button">Contáctanos</a>
+      <div class="cta-section__container">
+        <h2 class="cta-section__title">¿Interesado en ASICAM?</h2>
+        <p class="cta-section__text">Descubre cómo ASICAM puede transformar las operaciones logísticas de tu empresa</p>
+        <a href="contact.html" class="cta-section__button">Contáctanos</a>
       </div>
     </section>
   </main>
 
-  <!-- Footer común -->
-  <footer>
-    <div class="footer-container">
-      <p>&copy; 2025 Zerogap. Todos los derechos reservados.</p>
-      <p>Napoleón 3037, 71, Las Condes, Chile</p>
-      <p>Josue Smith Solar 426, Providencia, Chile</p>
-      <p><a href="https://wa.me/56939100549" target="_blank">WhatsApp</a> | <a href="mailto:contacto@zerogap.cl">contacto@zerogap.cl</a></p>
-    </div>
-  </footer>
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
 
-  <!-- Script para menú móvil y animaciones -->
-  <script>
-    const header = document.querySelector('header');
-    const scrollProgress = document.getElementById('scrollProgress');
-
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-
-      if (header) {
-        if (currentScroll > 50) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-      }
-
-      if (scrollProgress) {
-        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrolled = scrollHeight > 0 ? (currentScroll / scrollHeight) * 100 : 0;
-        scrollProgress.style.width = scrolled + '%';
-      }
-    });
-
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('section');
-      sections.forEach(section => observer.observe(section));
-
-      const menuToggle = document.getElementById('menuToggle');
-      const navMenu = document.getElementById('navMenu');
-      const menuOverlay = document.getElementById('menuOverlay');
-      const body = document.body;
-
-      function toggleMenu() {
-        if (!menuToggle || !navMenu || !menuOverlay) return;
-
-        menuToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        menuOverlay.classList.toggle('active');
-        body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-      }
-
-      function closeMenu() {
-        if (!menuToggle || !navMenu || !menuOverlay) return;
-
-        menuToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-        menuOverlay.classList.remove('active');
-        body.style.overflow = '';
-      }
-
-      if (menuToggle) {
-        menuToggle.addEventListener('click', toggleMenu);
-      }
-
-      if (menuOverlay) {
-        menuOverlay.addEventListener('click', closeMenu);
-      }
-
-      if (navMenu) {
-        navMenu.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', closeMenu);
-        });
-      }
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
-          closeMenu();
-        }
-      });
-    });
-  </script>
+  <!-- Component Loader -->
+  <script src="js/components.js"></script>
 </body>
+
 </html>

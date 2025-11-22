@@ -1,51 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - Zerogap</title>
+  <title>Contacto - Consultoría en Optimización Logística | Zerogap Chile</title>
   <!-- Enlaces a Google Fonts para replicar la tipografía original -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="animations.css">
-  <!-- Remover EmailJS SDK ya no es necesario -->
-  <meta name="description" content="Contáctate con Zerogap para llevar tus operaciones al siguiente nivel y descubrir soluciones logísticas de vanguardia.">
+  <link rel="stylesheet" href="contact-about-styles.css">
+  <meta name="description"
+    content="Contacta a Zerogap para optimizar tu logística industrial. Consultoría especializada en minería, forestal y transporte. Oficinas en Las Condes y Providencia, Chile. WhatsApp: +56 9 3910 0549 | Email: contacto@zerogap.cl">
+
+  <!-- JSON-LD: LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Zerogap",
+    "image": "https://zerogap.cl/images/logo.png",
+    "@id": "https://zerogap.cl",
+    "url": "https://zerogap.cl",
+    "telephone": "+56-9-3910-0549",
+    "email": "contacto@zerogap.cl",
+    "address": [
+      {
+        "@type": "PostalAddress",
+        "streetAddress": "Napoleón 3037, Depto 71",
+        "addressLocality": "Las Condes",
+        "addressRegion": "Región Metropolitana",
+        "postalCode": "7550000",
+        "addressCountry": "CL"
+      },
+      {
+        "@type": "PostalAddress",
+        "streetAddress": "Josue Smith Solar 426",
+        "addressLocality": "Providencia",
+        "addressRegion": "Región Metropolitana",
+        "postalCode": "7500000",
+        "addressCountry": "CL"
+      }
+    ],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -33.4172,
+      "longitude": -70.5947
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://wa.me/56939100549"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://zerogap.cl"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contacto",
+        "item": "https://zerogap.cl/contact.html"
+      }
+    ]
+  }
+  </script>
 </head>
+
 <body>
   <!-- Scroll progress indicator -->
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- Navegación común -->
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="logo"><img src="images/logo.png" alt="Logotipo Zerogap"></a>
-
-      <!-- Botón hamburguesa para móvil -->
-      <div class="menu-toggle" id="menuToggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <nav id="navMenu">
-        <a href="what-we-do.html">Qué hacemos</a>
-        <a href="success-cases.html">Casos de éxito</a>
-        <a href="asicam.html">ASICAM</a>
-        <a href="about.html">Acerca de</a>
-        <a href="contact.html" class="active">Contacto</a>
-      </nav>
-    </div>
-
-    <!-- Overlay para cerrar menú en móvil -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-  </header>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
 
   <main>
     <!-- Hero de página interna -->
-    <section id="page-hero">
-      <div class="hero-content">
-        <h1>Contáctanos</h1>
-        <p class="hero-subtitle">
+    <section class="hero hero--page">
+      <div class="hero__content">
+        <h1 class="hero__title">Contáctanos</h1>
+        <p class="hero__subtitle">
           Lleva tus operaciones al siguiente nivel. Conversemos sobre cómo podemos optimizar tus procesos logísticos.
         </p>
       </div>
@@ -58,12 +116,14 @@
           <!-- Información de contacto -->
           <div class="contact-info">
             <h2>Información de contacto</h2>
-            
+
             <!-- WhatsApp destacado -->
             <div class="contact-item featured">
               <div class="contact-icon whatsapp">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488" fill="#25D366"/>
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"
+                    fill="#25D366" />
                 </svg>
               </div>
               <div class="contact-details">
@@ -79,8 +139,10 @@
             <div class="contact-item">
               <div class="contact-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </div>
               <div class="contact-details">
@@ -94,8 +156,10 @@
             <div class="contact-item">
               <div class="contact-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </div>
               <div class="contact-details">
@@ -151,7 +215,8 @@
 
               <div class="form-group">
                 <label for="message">Mensaje *</label>
-                <textarea id="message" name="message" rows="6" required placeholder="Cuéntanos sobre tu desafío o proyecto..."></textarea>
+                <textarea id="message" name="message" rows="6" required
+                  placeholder="Cuéntanos sobre tu desafío o proyecto..."></textarea>
               </div>
 
               <button type="submit" class="submit-btn">Enviar mensaje</button>
@@ -168,118 +233,28 @@
     </section>
   </main>
 
-  <footer>
-    <div class="footer-container">
-      <p>&copy; 2025 Zerogap. Todos los derechos reservados.</p>
-      <p>Napoleón 3037, 71, Las Condes, Chile</p>
-      <p>Josue Smith Solar 426, Providencia, Chile</p>
-      <p><a href="https://wa.me/56939100549" target="_blank">WhatsApp</a> | <a href="mailto:contacto@zerogap.cl">contacto@zerogap.cl</a></p>
-    </div>
-  </footer>
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Component Loader -->
+  <script src="js/components.js"></script>
+
+
 
   <script>
-    // Header scroll effect
-    const header = document.querySelector('header');
-    const scrollProgress = document.getElementById('scrollProgress');
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-
-      // Header glassmorphism effect
-      if (currentScroll > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-
-      // Scroll progress indicator
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (currentScroll / scrollHeight) * 100;
-      scrollProgress.style.width = scrolled + '%';
-
-      lastScroll = currentScroll;
-    });
-
-    // Intersection Observer for reveal animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    // Observe sections
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('section');
-      sections.forEach((section) => {
-        observer.observe(section);
-      });
-    });
-
-    // Menú hamburguesa móvil
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.getElementById('menuToggle');
-      const navMenu = document.getElementById('navMenu');
-      const menuOverlay = document.getElementById('menuOverlay');
-      const body = document.body;
-
-      function toggleMenu() {
-        menuToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        menuOverlay.classList.toggle('active');
-        body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-      }
-
-      function closeMenu() {
-        menuToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-        menuOverlay.classList.remove('active');
-        body.style.overflow = '';
-      }
-
-      if (menuToggle) {
-        menuToggle.addEventListener('click', toggleMenu);
-      }
-
-      if (menuOverlay) {
-        menuOverlay.addEventListener('click', closeMenu);
-      }
-
-      // Cerrar menú al hacer click en un enlace
-      const navLinks = navMenu.querySelectorAll('a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
-      });
-
-      // Cerrar menú con tecla ESC
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-          closeMenu();
-        }
-      });
-    });
-
     // Manejar el envío del formulario con backend SMTP
-    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    document.getElementById('contactForm').addEventListener('submit', async function (e) {
       e.preventDefault();
-      
+
       const form = this;
       const statusDiv = document.getElementById('form-status');
       const submitBtn = form.querySelector('.submit-btn');
-      
+
       // Mostrar estado de carga
       submitBtn.innerHTML = 'Enviando...';
       submitBtn.disabled = true;
       statusDiv.innerHTML = '<p style="color: #0b5ed7;">Enviando mensaje...</p>';
-      
+
       // Preparar los datos del formulario
       const formData = {
         from_name: form.from_name.value,
@@ -290,7 +265,7 @@
         subject: form.subject.value,
         message: form.message.value
       };
-      
+
       try {
         // Enviar al backend
         const response = await fetch('/send-contact', {
@@ -300,27 +275,27 @@
           },
           body: JSON.stringify(formData)
         });
-        
+
         const result = await response.json();
-        
+
         if (result.success) {
           // Éxito
-          statusDiv.innerHTML = '<p style="color: #28a745; font-weight: bold;">✅ ¡Mensaje enviado correctamente! Te responderemos pronto.</p>';
+          statusDiv.innerHTML = `<p style="color: #28a745; font-weight: bold;">✅ ¡Mensaje enviado correctamente! Te responderemos pronto.</p>`;
           form.reset();
-          
+
           // Mostrar mensaje alternativo de WhatsApp
           setTimeout(() => {
-            statusDiv.innerHTML += '<p style="color: #25d366; margin-top: 15px;"><strong>¿Necesitas una respuesta más rápida?</strong><br><a href="https://wa.me/56939100549" target="_blank" style="color: #25d366; text-decoration: underline;">Escríbenos por WhatsApp</a></p>';
+            statusDiv.innerHTML += `<p style="color: #25d366; margin-top: 15px;"><strong>¿Necesitas una respuesta más rápida?</strong><br><a href="https://wa.me/56939100549" target="_blank" style="color: #25d366; text-decoration: underline;">Escríbenos por WhatsApp</a></p>`;
           }, 2000);
-          
+
         } else {
           throw new Error(result.error || 'Error desconocido');
         }
-        
+
       } catch (error) {
         // Error - usar fallback de mailto
         console.log('Backend failed:', error);
-        
+
         // Crear el cuerpo del correo para fallback
         const emailBody = `Nuevo mensaje de contacto desde zerogap.cl\n\n` +
           `Nombre: ${formData.from_name}\n` +
@@ -331,15 +306,18 @@
           `Asunto: ${formData.subject}\n\n` +
           `Mensaje:\n${formData.message}\n\n` +
           `---\nEnviado desde el formulario de contacto de zerogap.cl`;
-        
-        const mailtoLink = `mailto:contacto@zerogap.cl?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailBody)}`;
-        
+
+        const mailtoLink =
+          `mailto:contacto@zerogap.cl?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailBody)}`;
+
         statusDiv.innerHTML = `
-          <p style="color: #f39c12;">⚡ Abriendo tu cliente de correo...</p>
-          <p style="color: #25d366; margin-top: 15px;"><strong>¿Prefieres otra opción?</strong><br>
-          <a href="https://wa.me/56939100549" target="_blank" style="color: #25d366; text-decoration: underline;">Contáctanos por WhatsApp</a></p>
-        `;
-        
+  <p style="color: #f39c12;">⚡ Abriendo tu cliente de correo...</p>
+  <p style="color: #25d366; margin-top: 15px;"><strong>¿Prefieres otra opción?</strong><br>
+    <a href="https://wa.me/56939100549" target="_blank" style="color: #25d366; text-decoration: underline;">Contáctanos
+      por WhatsApp</a>
+  </p>
+  `;
+
         // Abrir cliente de correo como fallback
         setTimeout(() => {
           window.location.href = mailtoLink;
@@ -356,7 +334,7 @@
     requiredFields.forEach(fieldName => {
       const field = document.querySelector(`[name="${fieldName}"]`);
       if (field) {
-        field.addEventListener('blur', function() {
+        field.addEventListener('blur', function () {
           if (!this.value.trim()) {
             this.style.borderColor = '#e74c3c';
           } else {
@@ -369,7 +347,7 @@
     // Validación de email
     const emailField = document.querySelector('[name="reply_to"]');
     if (emailField) {
-      emailField.addEventListener('blur', function() {
+      emailField.addEventListener('blur', function () {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (this.value && !emailRegex.test(this.value)) {
           this.style.borderColor = '#e74c3c';
@@ -380,4 +358,5 @@
     }
   </script>
 </body>
+
 </html>
