@@ -418,12 +418,13 @@ h3 {
 .hero--page::before {
   background:
     linear-gradient(135deg,
-      rgba(10, 10, 10, 0.60) 0%,
-      rgba(26, 26, 26, 0.50) 50%,
-      rgba(10, 10, 10, 0.60) 100%),
+      rgba(10, 10, 10, 0.50) 0%,
+      rgba(26, 26, 26, 0.40) 50%,
+      rgba(10, 10, 10, 0.50) 100%),
     url('images/industrial-process.jpg');
   background-size: cover;
   background-position: center;
+  opacity: 1;
 }
 
 /* Hero Stats */
@@ -808,6 +809,14 @@ h3 {
   background: var(--light-100);
 }
 
+@media (max-width: 768px) {
+  .suite-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: 250px auto;
+    min-height: auto;
+  }
+}
+
 .suite-card__image-wrapper {
   position: relative;
   height: 100%;
@@ -876,7 +885,7 @@ h3 {
 
 .awards__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-xl);
   max-width: 1200px;
   margin: 0 auto;
@@ -1413,7 +1422,7 @@ h3 {
 
 .cases__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
   margin-top: 3em;
 }
@@ -1482,6 +1491,7 @@ h3 {
   margin-top: 20px;
   padding-top: 20px;
   border-top: 1px solid rgba(11, 94, 215, 0.1);
+  flex-wrap: wrap;
 }
 
 .case-card__result-item {
