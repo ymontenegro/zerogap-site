@@ -19,6 +19,20 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const isProd = process.env.NODE_ENV === 'production';
 
+// Detrás del proxy de Coolify/Hetzner: confiar en X-Forwarded-* para host/protocolo.
+app.set('trust proxy', true);
+
+// Consolidación de dominio: redirige www.* -> apex (zerogap.cl) con 301.
+// Antes www.zerogap.cl y zerogap.cl servían ambos con 200 (contenido duplicado);
+// esto unifica todo en el host canónico y evita diluir la autoridad.
+app.use((req, res, next) => {
+  const host = req.headers.host || '';
+  if (host.toLowerCase().startsWith('www.')) {
+    return res.redirect(301, 'https://' + host.slice(4) + req.originalUrl);
+  }
+  next();
+});
+
 // --- Componentes compartidos (header/footer) para inyección server-side ---
 // Los crawlers de buscadores y, sobre todo, los de IA (GPTBot, PerplexityBot,
 // ClaudeBot, Google-Extended) en su mayoría NO ejecutan JavaScript. Si el
