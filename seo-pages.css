@@ -1,0 +1,173 @@
+/* ============================================================
+   seo-pages.css
+   Estilos para páginas de contenido orientadas a SEO/GEO
+   (páginas-problema, PLANEX, consultoría). Reutiliza las
+   variables del design system definidas en style.css.
+   ============================================================ */
+
+/* Contenedor de contenido de texto */
+.content {
+  padding: var(--space-2xl) var(--space-md);
+  background: var(--light-100);
+}
+
+.content--alt {
+  background: var(--light-200);
+}
+
+/* Bloque de prosa (texto largo, citable por IA) */
+.prose {
+  max-width: 820px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.prose h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--text-primary);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.2;
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-sm);
+}
+
+.prose h2:first-child {
+  margin-top: 0;
+}
+
+.prose h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-xs);
+}
+
+.prose p {
+  margin-top: var(--space-sm);
+}
+
+.prose ul,
+.prose ol {
+  margin-top: var(--space-sm);
+  padding-left: 1.4rem;
+}
+
+.prose li {
+  margin-top: var(--space-xs);
+}
+
+.prose a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+}
+
+.prose strong {
+  color: var(--text-primary);
+}
+
+/* Caja de respuesta directa / definición — pensada para que los
+   motores generativos extraigan una respuesta clara y atribuible. */
+.answer-box {
+  max-width: 820px;
+  margin: 0 auto var(--space-lg);
+  background: var(--light-200);
+  border-left: 4px solid var(--primary-color);
+  border-radius: 12px;
+  padding: var(--space-md) var(--space-lg);
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  box-shadow: var(--shadow-sm);
+}
+
+.answer-box p {
+  margin: 0;
+}
+
+.answer-box p + p {
+  margin-top: var(--space-sm);
+}
+
+/* Chips de industrias / aplicaciones */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  max-width: 820px;
+  margin: var(--space-md) auto 0;
+  justify-content: center;
+}
+
+.chip {
+  background: var(--light-200);
+  color: var(--text-primary);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Sección de preguntas frecuentes */
+.faq {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.faq__title {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--text-primary);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.faq__item {
+  border: 1px solid var(--light-300);
+  border-radius: 12px;
+  padding: var(--space-md) var(--space-lg);
+  margin-top: var(--space-sm);
+  background: var(--light-100);
+  transition: box-shadow 0.2s ease;
+}
+
+.faq__item:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.faq__q {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.15rem;
+  margin: 0 0 var(--space-xs);
+}
+
+.faq__a {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.faq__a a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.faq__a a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: var(--space-xl) var(--space-sm);
+  }
+}

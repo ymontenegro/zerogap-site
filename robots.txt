@@ -1,0 +1,16 @@
+# robots.txt — zerogap.cl
+
+User-agent: *
+Disallow: /components/
+
+# Crawlers de IA / motores generativos (GEO): bienvenidos a indexar el sitio.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Disallow: /components/
+
+Sitemap: https://zerogap.cl/sitemap.xml

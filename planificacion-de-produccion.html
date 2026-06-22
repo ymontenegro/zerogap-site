@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planificación de Producción y Scheduling de Plantas | Optimización | Zerogap</title>
+  <link rel="canonical" href="https://zerogap.cl/planificacion-de-produccion.html">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="seo-pages.css">
+  <link rel="stylesheet" href="animations.css">
+  <meta name="description"
+    content="Planificación de producción y scheduling de plantas con optimización: secuencia los productos para minimizar cambios de formato y tiempos de setup, cumplir la demanda comercial y mejorar la utilización de capacidad. Zerogap, investigación operativa aplicada a manufactura, alimentos y bebidas.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Zerogap">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:url" content="https://zerogap.cl/planificacion-de-produccion.html">
+  <meta property="og:title" content="Planificación de Producción y Scheduling de Plantas | Optimización">
+  <meta property="og:description"
+    content="Modelos de planificación y programación de la producción que secuencian productos, reducen cambios de formato y setup, cumplen la demanda y elevan la utilización de las líneas.">
+  <meta property="og:image" content="https://zerogap.cl/images/service1.jpg">
+
+  <!-- JSON-LD: Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Planificación y programación de la producción (scheduling)",
+    "serviceType": "Planificación de producción y scheduling de plantas",
+    "description": "Diseño e implementación de modelos de optimización para la planificación y programación (scheduling) de líneas de producción: secuenciamiento de productos, minimización de cambios de formato y tiempos de setup, cumplimiento de la demanda comercial y mejora de la utilización de la capacidad.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Zerogap",
+      "url": "https://zerogap.cl"
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Chile" },
+      { "@type": "Place", "name": "Latinoamérica" }
+    ],
+    "audience": {
+      "@type": "BusinessAudience",
+      "name": "Manufactura, alimentos y bebidas, y procesos industriales"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué es la planificación de producción y el scheduling de planta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La planificación de producción decide qué, cuánto y cuándo fabricar para cumplir la demanda comercial con la capacidad disponible. El scheduling, o programación de la producción, baja ese plan al detalle: define la secuencia y los tiempos de cada producto en cada línea o equipo. Zerogap construye modelos de optimización que resuelven ambos niveles de forma consistente."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo ayuda la optimización a reducir los cambios de formato y los tiempos de setup?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El orden en que se fabrican los productos determina cuántos cambios de formato y limpiezas se necesitan. Un modelo de scheduling secuencia los productos para agrupar los que comparten formato o configuración, de modo que se reducen los cambios y los tiempos de setup, sin descuidar las fechas de entrega comprometidas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué restricciones considera un modelo de programación de la producción?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Considera la capacidad de las líneas y equipos, las ventanas de entrega de los pedidos, las secuencias permitidas entre productos, los tiempos de cambio de formato y setup, la disponibilidad de insumos y los turnos. El objetivo es un plan factible que cumpla la demanda y use mejor la capacidad."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Para qué industrias aplica la planificación de producción de Zerogap?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aplica a manufactura, alimentos y bebidas, packaging, química y bienes de consumo: en general, a cualquier planta con múltiples productos, líneas compartidas y costos de cambio de formato que deba cumplir una demanda comercial exigente."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo se integra el scheduling con la operación de la planta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Partimos de los datos y restricciones reales de la planta y entregamos planes diarios y semanales que el equipo de operaciones puede ejecutar. Los modelos se ajustan iterativamente con el equipo y permiten evaluar escenarios de demanda y capacidad antes de comprometer la programación."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://zerogap.cl" },
+      { "@type": "ListItem", "position": 2, "name": "Planificación de producción", "item": "https://zerogap.cl/planificacion-de-produccion.html" }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero hero--page">
+      <div class="hero__content">
+        <h1 class="hero__title">Planificación de producción y scheduling de plantas</h1>
+        <p class="hero__subtitle">
+          Secuencia tus productos para minimizar cambios de formato y setup, cumplir la demanda comercial y aprovechar
+          mejor la capacidad de tus líneas.
+        </p>
+        <a href="contact.html" class="btn"><span>Conversemos sobre tu planta</span></a>
+      </div>
+    </section>
+
+    <!-- Definición / respuesta directa -->
+    <section class="content">
+      <div class="answer-box">
+        <p>La <strong>planificación de producción</strong> decide qué, cuánto y cuándo fabricar para cumplir la demanda
+          comercial con la capacidad disponible; el <strong>scheduling</strong> o programación de la producción baja ese
+          plan a la secuencia y los tiempos de cada producto en cada línea. Zerogap construye <strong>modelos de
+            optimización</strong> que resuelven ambos niveles de forma consistente: secuencian los productos, reducen
+          los cambios de formato y los tiempos de setup, y mejoran la utilización efectiva de la planta.</p>
+      </div>
+
+      <div class="prose">
+        <h2>El problema: cumplir la demanda sin perder capacidad en los cambios</h2>
+        <p>
+          En una planta con muchos productos y líneas compartidas, el orden en que se fabrica importa tanto como cuánto
+          se fabrica. Cada vez que se cambia de formato, sabor, envase o configuración hay un costo: tiempo de cambio,
+          limpieza, ajuste y, sobre todo, capacidad que se pierde y no produce. Si la secuencia se arma a mano o por
+          inercia, terminan apareciendo cambios de formato innecesarios, líneas detenidas y pedidos que llegan justos o
+          atrasados.
+        </p>
+        <p>
+          Al mismo tiempo, comercial necesita que se cumpla la demanda y las ventanas de entrega, y operaciones necesita
+          que el plan sea <strong>factible</strong> con la capacidad y los turnos reales. Resolver estas tensiones con
+          planillas se vuelve inmanejable apenas crece el número de productos y restricciones.
+        </p>
+        <p>
+          La <strong>programación de la producción optimizada</strong> aborda el problema completo: encuentra la
+          secuencia y la asignación de productos a líneas que <strong>cumple la demanda</strong> y, a la vez,
+          <strong>minimiza los cambios de formato y los tiempos de setup</strong>, liberando capacidad sin sacrificar el
+          nivel de servicio.
+        </p>
+      </div>
+    </section>
+
+    <!-- Capacidades -->
+    <section class="pillars">
+      <h2 class="services__title">Qué optimizamos</h2>
+      <div class="pillars__grid">
+        <article class="pillar-card">
+          <div class="pillar-card__content">
+            <h3 class="pillar-card__title">Secuenciamiento de productos</h3>
+            <p class="pillar-card__text">Ordenamos la producción para agrupar formatos compatibles y minimizar los
+              cambios y limpiezas entre productos.</p>
+          </div>
+        </article>
+        <article class="pillar-card">
+          <div class="pillar-card__content">
+            <h3 class="pillar-card__title">Reducción de cambios y setup</h3>
+            <p class="pillar-card__text">Tratamos los tiempos de cambio de formato y de setup como un costo a minimizar,
+              recuperando capacidad de las líneas.</p>
+          </div>
+        </article>
+        <article class="pillar-card">
+          <div class="pillar-card__content">
+            <h3 class="pillar-card__title">Cumplimiento de la demanda</h3>
+            <p class="pillar-card__text">Integramos las ventanas de entrega y los pedidos comprometidos para que el plan
+              respete el nivel de servicio comercial.</p>
+          </div>
+        </article>
+        <article class="pillar-card">
+          <div class="pillar-card__content">
+            <h3 class="pillar-card__title">Utilización de capacidad</h3>
+            <p class="pillar-card__text">Asignamos productos a líneas y turnos buscando aprovechar mejor la capacidad
+              disponible y reducir tiempos muertos.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Cómo trabajamos -->
+    <section class="methodology">
+      <h2 class="methodology__title">Cómo lo implementamos</h2>
+      <p class="methodology__intro">Un proceso probado para llevar el modelo a la operación de la planta.</p>
+      <div class="methodology__grid">
+        <article class="step-card">
+          <div class="step-card__number">01</div>
+          <h3 class="step-card__title">Datos y restricciones</h3>
+          <p class="step-card__text">Levantamos productos, líneas, capacidades, tiempos de cambio, ventanas de entrega y
+            la demanda comercial.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-card__number">02</div>
+          <h3 class="step-card__title">Modelado</h3>
+          <p class="step-card__text">Construimos el modelo de planificación y scheduling con las restricciones
+            operacionales reales de la planta.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-card__number">03</div>
+          <h3 class="step-card__title">Optimización</h3>
+          <p class="step-card__text">El modelo genera la secuencia y la asignación que cumple la demanda minimizando
+            cambios y setup.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-card__number">04</div>
+          <h3 class="step-card__title">Planes y ajuste</h3>
+          <p class="step-card__text">Entregamos planes diarios y semanales, los revisamos con tu equipo y ajustamos
+            escenarios de demanda y capacidad.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Caso real -->
+    <section class="content content--alt">
+      <div class="prose">
+        <h2>Caso real: planta embotelladora de bebidas de gran escala</h2>
+        <p>
+          Zerogap desarrolló la planificación de producción de una <strong>planta embotelladora de bebidas de gran
+            escala</strong>. Construimos modelos de planificación y scheduling que integran las
+          <strong>restricciones de capacidad</strong>, las <strong>ventanas de entrega</strong>, las
+          <strong>secuencias de productos</strong> y los <strong>tiempos de cambio</strong>, generando planes diarios y
+          semanales consistentes con la demanda.
+        </p>
+        <p>
+          Con este enfoque, la planta logró <strong>reducir los cambios de formato y los tiempos de setup</strong>,
+          <strong>mejorar el cumplimiento de los pedidos</strong> y <strong>aumentar la utilización efectiva de las
+            líneas</strong>: la misma capacidad pasó a producir más de lo que el mercado realmente pedía, con una
+          programación más estable y predecible para operaciones.
+        </p>
+        <p>
+          Puedes ver este y otros proyectos en nuestros <a href="success-cases.html">casos de éxito</a>. La
+          planificación de producción forma parte de nuestra <a href="consultoria-de-optimizacion.html">consultoría de
+            optimización</a>, donde combinamos investigación operativa, analítica avanzada e implementación de software.
+        </p>
+      </div>
+
+      <div class="chips">
+        <span class="chip">Bebidas y alimentos</span>
+        <span class="chip">Manufactura</span>
+        <span class="chip">Packaging</span>
+        <span class="chip">Química</span>
+        <span class="chip">Bienes de consumo</span>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="content">
+      <div class="faq">
+        <h2 class="faq__title">Preguntas frecuentes sobre planificación de producción</h2>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Qué es la planificación de producción y el scheduling de planta?</h3>
+          <p class="faq__a">La planificación de producción decide qué, cuánto y cuándo fabricar para cumplir la demanda
+            comercial con la capacidad disponible. El scheduling, o programación de la producción, baja ese plan al
+            detalle: define la secuencia y los tiempos de cada producto en cada línea o equipo. Zerogap construye
+            modelos de optimización que resuelven ambos niveles de forma consistente.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Cómo ayuda la optimización a reducir los cambios de formato y los tiempos de setup?</h3>
+          <p class="faq__a">El orden en que se fabrican los productos determina cuántos cambios de formato y limpiezas se
+            necesitan. Un modelo de scheduling secuencia los productos para agrupar los que comparten formato o
+            configuración, de modo que se reducen los cambios y los tiempos de setup, sin descuidar las fechas de entrega
+            comprometidas.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Qué restricciones considera un modelo de programación de la producción?</h3>
+          <p class="faq__a">Considera la capacidad de las líneas y equipos, las ventanas de entrega de los pedidos, las
+            secuencias permitidas entre productos, los tiempos de cambio de formato y setup, la disponibilidad de insumos
+            y los turnos. El objetivo es un plan factible que cumpla la demanda y use mejor la capacidad.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Para qué industrias aplica la planificación de producción de Zerogap?</h3>
+          <p class="faq__a">Aplica a manufactura, alimentos y bebidas, packaging, química y bienes de consumo: en
+            general, a cualquier planta con múltiples productos, líneas compartidas y costos de cambio de formato que
+            deba cumplir una demanda comercial exigente.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Cómo se integra el scheduling con la operación de la planta?</h3>
+          <p class="faq__a">Partimos de los datos y restricciones reales de la planta y entregamos planes diarios y
+            semanales que el equipo de operaciones puede ejecutar. Los modelos se ajustan iterativamente con el equipo y
+            permiten evaluar escenarios de demanda y capacidad antes de comprometer la programación. Conversemos en <a
+              href="contact.html">contacto</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="cta">
+      <div class="cta__container">
+        <h2>¿Programas tu planta a mano o con planillas?</h2>
+        <p>Te mostramos cómo un modelo de scheduling reduce cambios de formato y libera capacidad sobre tus propios
+          datos.</p>
+        <a href="contact.html" class="btn btn-primary"><span>Contáctanos</span></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script src="js/components.js"></script>
+</body>
+
+</html>

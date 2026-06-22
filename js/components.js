@@ -1,98 +1,91 @@
 /**
  * Component Loader for Zerogap Website
- * Loads header and footer dynamically and handles their functionality
+ *
+ * Estrategia de "progressive enhancement":
+ *  - En producción el servidor (server.js) inyecta el header y el footer
+ *    directamente en el HTML, de modo que los crawlers (incluidos los de IA,
+ *    que no ejecutan JS) ven la navegación y los enlaces internos. En ese caso
+ *    aquí sólo inicializamos la interactividad (menú móvil, link activo, scroll).
+ *  - Si el header/footer NO están presentes (p. ej. abriendo el HTML como
+ *    archivo estático, sin servidor), hacemos fetch de los componentes como
+ *    respaldo para no perder la navegación.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  loadHeader();
-  loadFooter();
+  setupHeader();
+  setupFooter();
 });
 
-async function loadHeader() {
-  const placeholder = document.getElementById('header-placeholder');
-  if (!placeholder) {
-    console.error('Header placeholder not found');
+async function setupHeader() {
+  // Caso 1: el servidor ya inyectó el header → sólo inicializar.
+  if (document.querySelector('.site-header')) {
+    initHeader();
     return;
   }
 
+  // Caso 2: existe el placeholder → fetch de respaldo.
+  const placeholder = document.getElementById('header-placeholder');
+  if (!placeholder) return;
+
   try {
-    console.log('Fetching header...');
     const response = await fetch('/components/header.html');
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const html = await response.text();
 
-    // Create a temporary container to parse the HTML
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = html;
-
-    // Get the header element
     const headerElement = tempDiv.querySelector('header');
+    if (!headerElement) return;
 
-    if (!headerElement) {
-      console.error('Header element not found in response');
-      return;
-    }
-
-    // Replace placeholder with header
     placeholder.replaceWith(headerElement);
-    console.log('Header loaded successfully');
-
-    // Initialize header functionality
     initHeader();
   } catch (error) {
     console.error('Error loading header:', error);
   }
 }
 
-async function loadFooter() {
+async function setupFooter() {
+  // Caso 1: el servidor ya inyectó el footer → nada que hacer.
+  if (document.querySelector('.site-footer')) return;
+
+  // Caso 2: existe el placeholder → fetch de respaldo.
   const placeholder = document.getElementById('footer-placeholder');
-  if (!placeholder) {
-    console.error('Footer placeholder not found');
-    return;
-  }
+  if (!placeholder) return;
 
   try {
-    console.log('Fetching footer...');
     const response = await fetch('/components/footer.html');
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const html = await response.text();
 
-    // Create a temporary container to parse the HTML
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = html;
-
-    // Get the footer element
     const footerElement = tempDiv.querySelector('footer');
+    if (!footerElement) return;
 
-    if (!footerElement) {
-      console.error('Footer element not found in response');
-      return;
-    }
-
-    // Replace placeholder with footer
     placeholder.replaceWith(footerElement);
-    console.log('Footer loaded successfully');
   } catch (error) {
     console.error('Error loading footer:', error);
   }
 }
 
 function initHeader() {
-  // 1. Highlight active link
+  // 1. Resaltar el enlace activo (soporta rutas con y sin .html)
   const currentPath = window.location.pathname;
-  const filename = currentPath.split('/').pop() || 'index.html';
+  let filename = currentPath.split('/').pop() || 'index.html';
+  if (filename === '') filename = 'index.html';
+  // Normalizar rutas limpias: /asicam -> asicam.html
+  if (filename && !filename.includes('.')) filename = filename + '.html';
 
   const navLinks = document.querySelectorAll('.main-nav__link');
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
-    if (href === filename || (filename === 'index.html' && href === './')) {
-      link.classList.add('main-nav__link--active');
-    } else {
-      link.classList.remove('main-nav__link--active');
-    }
+    const isActive =
+      href === filename ||
+      (filename === 'index.html' && (href === './' || href === 'index.html' || href === '/'));
+    link.classList.toggle('main-nav__link--active', isActive);
   });
 
-  // 2. Mobile Menu Toggle
+  // 2. Menú móvil
   const menuToggle = document.getElementById('menuToggle');
   const navMenu = document.getElementById('navMenu');
   const menuOverlay = document.getElementById('menuOverlay');
@@ -115,36 +108,27 @@ function initHeader() {
 
     menuToggle.addEventListener('click', toggleMenu);
     menuOverlay.addEventListener('click', closeMenu);
-
-    // Close menu when clicking a link
-    navLinks.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
+    navLinks.forEach(link => link.addEventListener('click', closeMenu));
   }
 
-  // 3. Scroll Effect
+  // 3. Efecto de scroll en el header + barra de progreso
   const header = document.querySelector('.site-header');
   const scrollProgress = document.getElementById('scrollProgress');
 
   function handleScroll() {
     const currentScroll = window.pageYOffset;
 
-    // Header glassmorphism effect
-    if (currentScroll > 50) {
-      header.classList.add('site-header--scrolled');
-    } else {
-      header.classList.remove('site-header--scrolled');
+    if (header) {
+      header.classList.toggle('site-header--scrolled', currentScroll > 50);
     }
 
-    // Scroll progress indicator
     if (scrollProgress) {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (currentScroll / scrollHeight) * 100;
+      const scrolled = scrollHeight > 0 ? (currentScroll / scrollHeight) * 100 : 0;
       scrollProgress.style.width = scrolled + '%';
     }
   }
 
   window.addEventListener('scroll', handleScroll);
-  // Trigger once on load to set initial state
   handleScroll();
 }

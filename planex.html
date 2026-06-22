@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PLANEX | Software de Planificación de Caminos y Cosecha Forestal | Zerogap</title>
+  <link rel="canonical" href="https://zerogap.cl/planex.html">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="seo-pages.css">
+  <link rel="stylesheet" href="animations.css">
+  <meta name="description"
+    content="PLANEX es el sistema de Zerogap para el diseño óptimo de la red de caminos forestales y la localización de maquinaria de cosecha, minimizando en conjunto los costos de construcción de caminos y de madereo. Respaldado por Operations Research.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Zerogap">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:url" content="https://zerogap.cl/planex.html">
+  <meta property="og:title" content="PLANEX | Planificación óptima de caminos y cosecha forestal">
+  <meta property="og:description"
+    content="Diseña la red de caminos forestales y ubica la maquinaria de cosecha minimizando los costos conjuntos de construcción de caminos y de madereo.">
+  <meta property="og:image" content="https://zerogap.cl/images/suite1.jpg">
+
+  <!-- JSON-LD: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PLANEX",
+    "applicationCategory": "BusinessApplication",
+    "applicationSubCategory": "Forestry Planning / Operations Research",
+    "operatingSystem": "Web-based",
+    "description": "Sistema de optimización para el diseño de la red de caminos forestales y la localización de maquinaria de cosecha, que minimiza de forma conjunta los costos de construcción y mantención de caminos y los costos de cosecha y madereo.",
+    "featureList": [
+      "Diseño óptimo de red de caminos forestales",
+      "Localización óptima de maquinaria de cosecha y madereo",
+      "Minimización conjunta de costos de caminos y de cosecha",
+      "Consideración de pendiente del terreno y distancias de madereo",
+      "Planificación sobre datos topográficos y de rodales reales"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Zerogap",
+      "url": "https://zerogap.cl"
+    },
+    "isBasedOn": {
+      "@type": "ScholarlyArticle",
+      "name": "A combinatorial heuristic approach for solving real-size machinery location and road design problems in forestry planning",
+      "isPartOf": "Operations Research, 54(6), 1017-1027 (2006)",
+      "sameAs": "https://doi.org/10.1287/opre.1060.0331"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué es PLANEX?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PLANEX es un sistema de optimización desarrollado por Zerogap que diseña la red de caminos forestales y la ubicación de la maquinaria de cosecha, minimizando de forma conjunta los costos de construcción y mantención de caminos y los costos de cosecha y madereo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué problema resuelve PLANEX?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Resuelve el problema combinado de dónde construir caminos y dónde ubicar los equipos de cosecha en una faena forestal. Decidir ambas cosas por separado lleva a sobrecostos: más camino del necesario o distancias de madereo demasiado largas. PLANEX las optimiza en conjunto."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué considera el modelo de PLANEX?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Considera la topografía y pendiente del terreno, las distancias de madereo, la productividad de los equipos, y los costos de construcción y mantención de caminos, para encontrar la combinación de menor costo total."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Tiene respaldo académico PLANEX?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. El enfoque de PLANEX fue publicado en Operations Research (Epstein, Weintraub, Sapunar, Nieto, Sessions y Sessions, 2006) y documentado por el Instituto Forestal (INFOR) de Chile."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Para qué empresas sirve PLANEX?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para empresas forestales y de cosecha que planifican faenas con redes de caminos y equipos de madereo, y que buscan reducir el costo total de habilitación y cosecha. Forma parte de la Suite Forestal de Zerogap junto a ASICAM y OPTICORT."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://zerogap.cl" },
+      { "@type": "ListItem", "position": 2, "name": "PLANEX", "item": "https://zerogap.cl/planex.html" }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero hero--page">
+      <div class="hero__content">
+        <h1 class="hero__title">PLANEX: diseño óptimo de caminos y cosecha forestal</h1>
+        <p class="hero__subtitle">
+          Decide dónde construir caminos y dónde ubicar la maquinaria de cosecha minimizando el costo total de la faena.
+        </p>
+        <a href="contact.html" class="btn"><span>Solicita una demostración</span></a>
+      </div>
+    </section>
+
+    <!-- Definición / respuesta directa -->
+    <section class="content">
+      <div class="answer-box">
+        <p><strong>PLANEX</strong> es el sistema de Zerogap para el <strong>diseño de la red de caminos
+            forestales</strong> y la <strong>localización de la maquinaria de cosecha</strong>. Su objetivo es minimizar
+          de forma conjunta los costos de construcción y mantención de caminos y los costos de cosecha y madereo,
+          considerando la pendiente del terreno, las distancias de madereo y la productividad de los equipos.</p>
+      </div>
+
+      <div class="prose">
+        <h2>El problema: caminos y cosecha no se deben decidir por separado</h2>
+        <p>
+          En una faena forestal hay una tensión clásica. Construir más caminos acerca los equipos a la madera y baja el
+          costo de madereo, pero encarece la construcción y mantención. Construir menos caminos ahorra obra, pero obliga
+          a maderear distancias largas y cuesta arriba. Resolver cada decisión por separado —primero los caminos, luego
+          dónde poner las torres o el equipo— casi siempre deja plata sobre la mesa.
+        </p>
+        <p>
+          PLANEX aborda <strong>ambas decisiones a la vez</strong>: sobre la topografía y los rodales reales, busca la
+          combinación de caminos y ubicaciones de maquinaria que entrega el <strong>menor costo total</strong> de la
+          operación.
+        </p>
+      </div>
+    </section>
+
+    <!-- Capacidades -->
+    <section class="pillars">
+      <h2 class="services__title">Qué hace PLANEX</h2>
+      <div class="pillars__grid">
+        <article class="pillar-card">
+          <div class="pillar-card__content">
+            <h3 class="pillar-card__title">Diseño de red de caminos</h3>
+            <p class="pillar-card__text">Define qué caminos construir y mantener para acceder a la madera al mínimo
+              costo, sobre el terreno real.</p>
+          </div>
+        </article>
+        <article class="pillar-card">
+          <div class="pillar-card__content">
+            <h3 class="pillar-card__title">Localización de maquinaria</h3>
+            <p class="pillar-card__text">Ubica las torres y equipos de cosecha y madereo donde rinden más, según
+              distancias y pendiente.</p>
+          </div>
+        </article>
+        <article class="pillar-card">
+          <div class="pillar-card__content">
+            <h3 class="pillar-card__title">Optimización conjunta de costos</h3>
+            <p class="pillar-card__text">Minimiza en un solo modelo los costos de caminos y de cosecha, evitando los
+              sobrecostos de decidir por separado.</p>
+          </div>
+        </article>
+        <article class="pillar-card">
+          <div class="pillar-card__content">
+            <h3 class="pillar-card__title">Sobre datos reales</h3>
+            <p class="pillar-card__text">Trabaja con topografía, pendientes, distancias de madereo y productividades de
+              equipos a escala de faena real.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Cómo trabajamos -->
+    <section class="methodology">
+      <h2 class="methodology__title">Cómo lo implementamos</h2>
+      <p class="methodology__intro">Un proceso probado para llevar el modelo a la operación.</p>
+      <div class="methodology__grid">
+        <article class="step-card">
+          <div class="step-card__number">01</div>
+          <h3 class="step-card__title">Datos del terreno</h3>
+          <p class="step-card__text">Cargamos topografía, rodales, caminos existentes y parámetros de costos y
+            productividad.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-card__number">02</div>
+          <h3 class="step-card__title">Modelado</h3>
+          <p class="step-card__text">Configuramos el modelo de optimización con las restricciones operacionales de la
+            faena.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-card__number">03</div>
+          <h3 class="step-card__title">Optimización</h3>
+          <p class="step-card__text">PLANEX resuelve caminos y localización de maquinaria buscando el menor costo
+            total.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-card__number">04</div>
+          <h3 class="step-card__title">Plan y ajuste</h3>
+          <p class="step-card__text">Entregamos el plan, lo revisamos con tu equipo y ajustamos escenarios.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Respaldo académico -->
+    <section class="content content--alt">
+      <div class="prose">
+        <h2>Respaldo académico</h2>
+        <p>
+          El enfoque de PLANEX fue publicado en una de las revistas más relevantes del área de investigación operativa:
+        </p>
+      </div>
+      <div class="pub-card pub-card--featured" style="max-width: 820px; margin: var(--space-md) auto 0;">
+        <div class="pub-card__header">
+          <h3 class="pub-card__title">PLANEX — Planificación de caminos y cosecha forestal</h3>
+        </div>
+        <div class="pub-card__content">
+          <p class="pub-card__authors">Epstein, R., Weintraub, A., Sapunar, P., Nieto, E., Sessions, B., &amp; Sessions,
+            J.</p>
+          <p class="pub-card__title">A combinatorial heuristic approach for solving real-size machinery location and road
+            design problems in forestry planning</p>
+          <p class="pub-card__venue"><strong>Operations Research</strong>, 54(6), 1017-1027 (2006)</p>
+          <a href="https://doi.org/10.1287/opre.1060.0331" target="_blank" rel="noopener" class="pub-card__link">Ver
+            publicación →</a>
+        </div>
+      </div>
+      <div class="prose" style="margin-top: var(--space-md);">
+        <p>
+          Además está documentado por el <strong>Instituto Forestal (INFOR)</strong> de Chile. PLANEX forma parte de la
+          <strong>Suite Forestal</strong> de Zerogap, junto a <a href="asicam.html">ASICAM</a> (asignación de camiones) y
+          OPTICORT (planificación de corta).
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="content">
+      <div class="faq">
+        <h2 class="faq__title">Preguntas frecuentes sobre PLANEX</h2>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Qué es PLANEX?</h3>
+          <p class="faq__a">Es un sistema de optimización de Zerogap que diseña la red de caminos forestales y la
+            ubicación de la maquinaria de cosecha, minimizando en conjunto los costos de caminos y de madereo.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Qué problema resuelve?</h3>
+          <p class="faq__a">El problema combinado de dónde construir caminos y dónde ubicar los equipos de cosecha.
+            Decidirlos por separado genera sobrecostos: demasiado camino o distancias de madereo excesivas.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Qué considera el modelo?</h3>
+          <p class="faq__a">Topografía y pendiente del terreno, distancias de madereo, productividad de los equipos y los
+            costos de construcción y mantención de caminos.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Tiene respaldo académico?</h3>
+          <p class="faq__a">Sí, fue publicado en <em>Operations Research</em> (2006) y documentado por el Instituto
+            Forestal (INFOR) de Chile.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Para qué empresas sirve?</h3>
+          <p class="faq__a">Para empresas forestales y de cosecha que buscan reducir el costo total de habilitación de
+            caminos y madereo. Conversemos en <a href="contact.html">contacto</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="cta">
+      <div class="cta__container">
+        <h2>¿Planificas faenas forestales con caminos y cosecha?</h2>
+        <p>Te mostramos cómo PLANEX reduce el costo total de tu operación sobre tus propios datos.</p>
+        <a href="contact.html" class="btn btn-primary"><span>Contáctanos</span></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script src="js/components.js"></script>
+</body>
+
+</html>

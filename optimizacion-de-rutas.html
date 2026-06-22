@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimización de Rutas: Última Milla, Reparto y Recolección | Zerogap</title>
+  <link rel="canonical" href="https://zerogap.cl/optimizacion-de-rutas.html">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="seo-pages.css">
+  <link rel="stylesheet" href="animations.css">
+  <meta name="description"
+    content="Optimización de rutas y ruteo de vehículos (VRP) para última milla, reparto, distribución urbana y recolección. Zerogap rediseña circuitos y territorios para reducir kilómetros, tiempos y emisiones, y equilibrar la carga entre repartidores. Respaldado por investigación operativa.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Zerogap">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:url" content="https://zerogap.cl/optimizacion-de-rutas.html">
+  <meta property="og:title" content="Optimización de Rutas: última milla, reparto y recolección | Zerogap">
+  <meta property="og:description"
+    content="Ruteo de vehículos (VRP) para reducir kilómetros, tiempos y emisiones, y equilibrar la carga de trabajo en última milla, distribución urbana y recolección.">
+  <meta property="og:image" content="https://zerogap.cl/images/service1.jpg">
+
+  <!-- JSON-LD: Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Optimización de rutas y ruteo de vehículos",
+    "serviceType": "Optimización de rutas / VRP / Última milla",
+    "description": "Servicio de Zerogap para el ruteo de vehículos (VRP) en última milla, reparto y distribución urbana, recolección de residuos y reciclaje, y distribución postal. Rediseña circuitos y territorios para reducir kilómetros, tiempos y emisiones, equilibrar la carga de trabajo entre repartidores y mejorar el nivel de servicio, considerando restricciones de tráfico, horarios y capacidades vehiculares.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Zerogap",
+      "url": "https://zerogap.cl"
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Chile" },
+      { "@type": "Place", "name": "Latinoamérica" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué es la optimización de rutas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Es el diseño de los recorridos de una flota de vehículos para cumplir un conjunto de visitas o entregas al menor costo posible. Conocido técnicamente como problema de ruteo de vehículos (VRP), busca el orden y la asignación de paradas que minimizan kilómetros, tiempos y emisiones, respetando restricciones de tráfico, horarios y capacidad de cada vehículo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué problema resuelve el ruteo de vehículos (VRP)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Resuelve cómo repartir las visitas entre los vehículos disponibles y en qué orden recorrerlas. Hacerlo a mano o por costumbre genera recorridos cruzados, vehículos desbalanceados y kilómetros innecesarios. La optimización encuentra rutas más cortas y equilibradas que reducen costos operacionales y mejoran el cumplimiento de los tiempos comprometidos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué restricciones considera el modelo de optimización de rutas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Considera las capacidades de cada vehículo, las ventanas horarias de los clientes o los servicios, las condiciones y restricciones de tráfico, las zonas o territorios de cobertura, y el equilibrio de la carga de trabajo entre los repartidores, de modo que la solución sea aplicable en la operación real."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿En qué casos ha aplicado Zerogap la optimización de rutas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Zerogap ha rediseñado circuitos de recolección de residuos, reciclaje y reparto postal para recortar tiempos, emisiones y kilómetros. También ha optimizado cuarteles de distribución postal, rediseñando los territorios mediante clusterización y optimización de zonas para equilibrar la carga diaria entre carteros, reducir recorridos innecesarios y mejorar el uso de la flota."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Para qué industrias sirve la optimización de rutas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sirve para municipios y gobiernos locales, correos y paquetería, retail y distribución, gestión de residuos y operaciones de e-commerce y última milla. En general, para cualquier organización que mueva una flota de vehículos para entregar, recolectar o prestar servicios en terreno."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://zerogap.cl" },
+      { "@type": "ListItem", "position": 2, "name": "Optimización de rutas", "item": "https://zerogap.cl/optimizacion-de-rutas.html" }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero hero--page">
+      <div class="hero__content">
+        <h1 class="hero__title">Optimización de rutas: última milla, reparto y recolección</h1>
+        <p class="hero__subtitle">
+          Diseñamos el ruteo de tu flota para reducir kilómetros, tiempos y emisiones, y equilibrar la carga de trabajo
+          entre los repartidores.
+        </p>
+        <a href="contact.html" class="btn"><span>Conversemos tu operación</span></a>
+      </div>
+    </section>
+
+    <!-- Definición / respuesta directa -->
+    <section class="content">
+      <div class="answer-box">
+        <p>La <strong>optimización de rutas</strong> es el diseño de los recorridos de una flota de vehículos para
+          cumplir un conjunto de visitas o entregas al <strong>menor costo posible</strong>. Conocida técnicamente como
+          <strong>ruteo de vehículos (VRP)</strong>, define qué paradas hace cada vehículo y en qué orden, para reducir
+          kilómetros, tiempos y emisiones respetando el tráfico, los horarios y la capacidad de cada vehículo. Zerogap la
+          aplica en última milla, distribución urbana y recolección.</p>
+      </div>
+
+      <div class="prose">
+        <h2>El problema: rutas armadas a mano dejan plata sobre la mesa</h2>
+        <p>
+          Mover una flota para entregar, recolectar o prestar servicios en terreno parece simple, pero esconde un
+          problema combinatorio difícil. Hay que decidir cómo repartir las visitas entre los vehículos disponibles y en
+          qué orden recorrerlas, cumpliendo ventanas horarias, capacidades y restricciones de tráfico. Cuando esto se
+          arma a mano o por costumbre, aparecen recorridos cruzados, vehículos sobrecargados mientras otros van a media
+          carga, y kilómetros que nadie necesitaba hacer.
+        </p>
+        <p>
+          El costo no es solo combustible: son horas de los conductores, desgaste de la flota, emisiones y, sobre todo,
+          incumplimientos en los tiempos comprometidos con el cliente. La <strong>optimización de rutas</strong> aborda
+          todo esto en conjunto: busca el plan de recorridos de <strong>menor costo total</strong> que sigue siendo
+          aplicable en la operación real.
+        </p>
+      </div>
+    </section>
+
+    <!-- Capacidades -->
+    <section class="pillars">
+      <h2 class="services__title">Qué optimizamos</h2>
+      <div class="pillars__grid">
+        <article class="pillar-card">
+          <div class="pillar-card__content">
+            <h3 class="pillar-card__title">Última milla y reparto</h3>
+            <p class="pillar-card__text">Diseñamos las rutas de entrega y distribución urbana para acortar recorridos y
+              cumplir las ventanas horarias del cliente.</p>
+          </div>
+        </article>
+        <article class="pillar-card">
+          <div class="pillar-card__content">
+            <h3 class="pillar-card__title">Recolección y reciclaje</h3>
+            <p class="pillar-card__text">Rediseñamos circuitos de recolección de residuos y reciclaje para recortar
+              tiempos, emisiones y kilómetros.</p>
+          </div>
+        </article>
+        <article class="pillar-card">
+          <div class="pillar-card__content">
+            <h3 class="pillar-card__title">Territorios y zonas</h3>
+            <p class="pillar-card__text">Definimos cuarteles y zonas de cobertura mediante clusterización para equilibrar
+              la carga de trabajo entre los repartidores.</p>
+          </div>
+        </article>
+        <article class="pillar-card">
+          <div class="pillar-card__content">
+            <h3 class="pillar-card__title">Restricciones reales</h3>
+            <p class="pillar-card__text">Modelamos capacidades vehiculares, horarios y tráfico para que la solución sea
+              ejecutable, no solo teórica.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Cómo trabajamos -->
+    <section class="methodology">
+      <h2 class="methodology__title">Cómo lo implementamos</h2>
+      <p class="methodology__intro">Un proceso probado para llevar el ruteo a la operación diaria.</p>
+      <div class="methodology__grid">
+        <article class="step-card">
+          <div class="step-card__number">01</div>
+          <h3 class="step-card__title">Datos de la operación</h3>
+          <p class="step-card__text">Levantamos visitas, demandas, flota, depósitos, horarios y las restricciones
+            propias de tu operación.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-card__number">02</div>
+          <h3 class="step-card__title">Modelado del ruteo</h3>
+          <p class="step-card__text">Configuramos el modelo de ruteo de vehículos con tus capacidades, ventanas horarias
+            y condiciones de tráfico.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-card__number">03</div>
+          <h3 class="step-card__title">Optimización</h3>
+          <p class="step-card__text">Resolvemos la asignación y el orden de las paradas buscando el menor costo total en
+            kilómetros y tiempos.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-card__number">04</div>
+          <h3 class="step-card__title">Rutas y ajuste</h3>
+          <p class="step-card__text">Entregamos las rutas, las revisamos con tu equipo en terreno y ajustamos los
+            escenarios según la realidad.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Casos reales -->
+    <section class="content content--alt">
+      <div class="prose">
+        <h2>Casos reales</h2>
+        <p>
+          Zerogap respalda su trabajo en <strong>investigación operativa</strong> y lo ha aplicado en operaciones de
+          ruteo concretas en Chile:
+        </p>
+        <h3>Optimización de rutas urbanas</h3>
+        <p>
+          Rediseñamos circuitos de <strong>recolección de residuos, reciclaje y reparto postal</strong> para recortar
+          tiempos, emisiones y kilómetros. El modelo considera las restricciones de tráfico, los horarios y las
+          capacidades vehiculares, de modo que las rutas resultantes sean realmente ejecutables en la ciudad.
+        </p>
+        <h3>Optimización de cuarteles de distribución postal</h3>
+        <p>
+          Rediseñamos los <strong>territorios de distribución</strong> mediante clusterización y optimización de zonas.
+          El objetivo fue equilibrar la carga diaria entre los carteros, reducir recorridos innecesarios y mejorar tanto
+          los tiempos de reparto como el uso de la flota.
+        </p>
+        <p>
+          Puedes revisar más en nuestros <a href="success-cases.html">casos de éxito</a>. Si mueves una flota de
+          camiones o vehículos de transporte, mira también nuestra <a href="optimizacion-de-flota.html">optimización de
+            flota</a>, y para un acompañamiento integral, nuestra <a href="consultoria-de-optimizacion.html">consultoría
+            de optimización</a>.
+        </p>
+      </div>
+      <div class="chips">
+        <span class="chip">Municipios y gobiernos locales</span>
+        <span class="chip">Correos y paquetería</span>
+        <span class="chip">Retail y distribución</span>
+        <span class="chip">Gestión de residuos</span>
+        <span class="chip">E-commerce / última milla</span>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="content">
+      <div class="faq">
+        <h2 class="faq__title">Preguntas frecuentes sobre optimización de rutas</h2>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Qué es la optimización de rutas?</h3>
+          <p class="faq__a">Es el diseño de los recorridos de una flota de vehículos para cumplir un conjunto de visitas
+            o entregas al menor costo posible. Conocida técnicamente como problema de ruteo de vehículos (VRP), busca el
+            orden y la asignación de paradas que minimizan kilómetros, tiempos y emisiones, respetando restricciones de
+            tráfico, horarios y capacidad de cada vehículo.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Qué problema resuelve el ruteo de vehículos (VRP)?</h3>
+          <p class="faq__a">Resuelve cómo repartir las visitas entre los vehículos disponibles y en qué orden
+            recorrerlas. Hacerlo a mano o por costumbre genera recorridos cruzados, vehículos desbalanceados y kilómetros
+            innecesarios. La optimización encuentra rutas más cortas y equilibradas que reducen costos operacionales y
+            mejoran el cumplimiento de los tiempos comprometidos.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Qué restricciones considera el modelo de optimización de rutas?</h3>
+          <p class="faq__a">Considera las capacidades de cada vehículo, las ventanas horarias de los clientes o los
+            servicios, las condiciones y restricciones de tráfico, las zonas o territorios de cobertura, y el equilibrio
+            de la carga de trabajo entre los repartidores, de modo que la solución sea aplicable en la operación real.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">¿En qué casos ha aplicado Zerogap la optimización de rutas?</h3>
+          <p class="faq__a">Zerogap ha rediseñado circuitos de recolección de residuos, reciclaje y reparto postal para
+            recortar tiempos, emisiones y kilómetros. También ha optimizado cuarteles de distribución postal, rediseñando
+            los territorios mediante clusterización y optimización de zonas para equilibrar la carga diaria entre
+            carteros, reducir recorridos innecesarios y mejorar el uso de la flota.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Para qué industrias sirve la optimización de rutas?</h3>
+          <p class="faq__a">Sirve para municipios y gobiernos locales, correos y paquetería, retail y distribución,
+            gestión de residuos y operaciones de e-commerce y última milla. En general, para cualquier organización que
+            mueva una flota de vehículos para entregar, recolectar o prestar servicios en terreno. Conversemos en <a
+              href="contact.html">contacto</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="cta">
+      <div class="cta__container">
+        <h2>¿Tu flota recorre más kilómetros de los necesarios?</h2>
+        <p>Te mostramos cómo la optimización de rutas reduce kilómetros, tiempos y emisiones sobre tu propia operación.</p>
+        <a href="contact.html" class="btn btn-primary"><span>Contáctanos</span></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script src="js/components.js"></script>
+</body>
+
+</html>

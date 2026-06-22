@@ -9,6 +9,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const compression = require('compression');
 const helmet = require('helmet');
 const nodemailer = require('nodemailer');
@@ -16,6 +17,41 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const isProd = process.env.NODE_ENV === 'production';
+
+// --- Componentes compartidos (header/footer) para inyección server-side ---
+// Los crawlers de buscadores y, sobre todo, los de IA (GPTBot, PerplexityBot,
+// ClaudeBot, Google-Extended) en su mayoría NO ejecutan JavaScript. Si el
+// header/footer se cargan sólo en el cliente, esos bots ven páginas sin
+// navegación ni enlaces internos. Por eso los inyectamos en el servidor.
+function loadComponent(name) {
+  try {
+    return fs.readFileSync(path.join(__dirname, 'components', name), 'utf8').trim();
+  } catch (err) {
+    console.error('⚠️  No se pudo cargar el componente', name, '-', err.message);
+    return '';
+  }
+}
+
+let cachedHeader = loadComponent('header.html');
+let cachedFooter = loadComponent('footer.html');
+// En producción cacheamos; en desarrollo recargamos para ver cambios sin reiniciar.
+const getHeader = () => (isProd ? cachedHeader : loadComponent('header.html'));
+const getFooter = () => (isProd ? cachedFooter : loadComponent('footer.html'));
+
+// Sirve una página HTML reemplazando los placeholders por el header/footer reales.
+function renderPage(res, filename, status = 200) {
+  fs.readFile(path.join(__dirname, filename), 'utf8', (err, html) => {
+    if (err) {
+      console.error('⚠️  No se pudo leer la página', filename, '-', err.message);
+      return res.status(404).type('html').send('<h1>404 — Página no encontrada</h1>');
+    }
+    const out = html
+      .replace('<div id="header-placeholder"></div>', getHeader())
+      .replace('<div id="footer-placeholder"></div>', getFooter());
+    res.status(status).type('html').send(out);
+  });
+}
 
 // Configuración SMTP de Gmail
 const transporter = nodemailer.createTransport({
@@ -46,21 +82,28 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Servir archivos estáticos
+// --- Páginas HTML con header/footer inyectados server-side ---
+// Se interceptan ANTES de express.static para que el HTML entregado a
+// crawlers incluya navegación y enlaces internos.
+app.get('/', (req, res) => renderPage(res, 'index.html'));
+app.get(/\.html$/, (req, res) => renderPage(res, path.basename(req.path)));
+
+// Servir archivos estáticos (CSS, JS, imágenes, robots.txt, sitemap.xml)
 app.use(express.static(path.join(__dirname), {
+  index: false,
   maxAge: '1d',
   etag: true,
-  setHeaders: function (res, path, stat) {
+  setHeaders: function (res, filePath, stat) {
     res.set('Cache-Control', 'public, max-age=86400');
-    
-    if (path.endsWith('.css')) {
+
+    if (filePath.endsWith('.css')) {
       res.set('Content-Type', 'text/css; charset=utf-8');
     }
-    if (path.endsWith('.js')) {
+    if (filePath.endsWith('.js')) {
       res.set('Content-Type', 'application/javascript; charset=utf-8');
     }
-    if (path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.jpeg')) {
-      res.set('Content-Type', 'image/' + path.split('.').pop());
+    if (filePath.endsWith('.png') || filePath.endsWith('.jpg') || filePath.endsWith('.jpeg')) {
+      res.set('Content-Type', 'image/' + filePath.split('.').pop());
     }
   }
 }));
@@ -146,33 +189,21 @@ app.post('/send-contact', async (req, res) => {
   }
 });
 
-// Rutas para páginas específicas
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+// Rutas limpias (sin .html) para cualquier página existente.
+// Ej: /asicam -> asicam.html, /optimizacion-de-flota -> optimizacion-de-flota.html
+app.get('/:page', (req, res, next) => {
+  const page = req.params.page;
+  if (page.includes('.')) return next();
+  const candidate = path.join(__dirname, page + '.html');
+  fs.access(candidate, fs.constants.R_OK, (err) => {
+    if (err) return next();
+    renderPage(res, page + '.html');
+  });
 });
 
-app.get('/what-we-do', (req, res) => {
-  res.sendFile(path.join(__dirname, 'what-we-do.html'));
-});
-
-app.get('/success-cases', (req, res) => {
-  res.sendFile(path.join(__dirname, 'success-cases.html'));
-});
-
-app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, 'about.html'));
-});
-
-app.get('/contact', (req, res) => {
-  res.sendFile(path.join(__dirname, 'contact.html'));
-});
-
-// Catch-all para otras rutas
-app.get('*', (req, res) => {
-  if (req.path.includes('.')) {
-    return res.status(404).send('Archivo no encontrado');
-  }
-  res.sendFile(path.join(__dirname, 'index.html'));
+// 404 real (antes devolvía index.html con status 200 → soft 404, malo para SEO)
+app.use((req, res) => {
+  renderPage(res, '404.html', 404);
 });
 
 // Middleware de manejo de errores
